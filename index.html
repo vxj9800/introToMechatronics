@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>MAE3185 Presentation</title>
+
+	<meta name="description"
+		content="A presentation of all the topics discussed in the Introduction to Mechatronics class of the University of Texas at Arlington">
+	<meta name="author" content="Vatsal Joshi">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/mechatronics.css">
+
+	<!-- Add stylesheet for plotlyjs -->
+	<link rel="stylesheet" href="clockPlot.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<!-- Load plugin to write math equations -->
+<script src="plugin/math/math.js"></script>
+
+<!-- Load plotlyjs -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- Load homemade animation main script and other animation scripts -->
+<script src="./jsAnim/jsAnim.js"></script>
+<script src="./jsAnim/pwm/divReg.js"></script>
+<script src="./jsAnim/pwm/clkDiv.js"></script>
+<script src="./jsAnim/pwm/sysClkFrqSldr.js"></script>
+<script src="./jsAnim/pwm/clkDtSldr.js"></script>
+<script src="./jsAnim/pwm/sysClk.js"></script>
+<script src="./jsAnim/pwm/divClk.js"></script>
+<script src="./jsAnim/pwm/divClkFrqSldr.js"></script>
+<script src="./jsAnim/pwm/clkDtSldr2.js"></script>
+<script src="./jsAnim/pwm/divClk2.js"></script>
+<script src="./jsAnim/pwm/topReg.js"></script>
+<script src="./jsAnim/pwm/ctrReg.js"></script>
+<script src="./jsAnim/pwm/clkDtSldr3.js"></script>
+<script src="./jsAnim/pwm/divClkFrqSldr2.js"></script>
+<script src="./jsAnim/pwm/ccReg.js"></script>
+<script src="./jsAnim/pwm/topReg2.js"></script>
+<script src="./jsAnim/pwm/ctrReg2.js"></script>
+<script src="./jsAnim/pwm/pwmOut.js"></script>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-auto-animate>
+
+
+
+				<section data-auto-animate id="h0v0">
+					<h3>Pulsed Width Modulation</h3>
+				</section>
+
+
+
+				<section data-auto-animate id="h0v1">
+					<h3>Pulsed Width Modulation</h3>
+					<ul style="font-size: 30px">
+						<li class="fragment" style="margin-bottom:24px">The hardware module for Pulsed Width Modulation
+							(PWM) is also known as a
+							Timer.</li>
+						<li class="fragment" style="margin-bottom:24px">In RP2040, the generation of PWM
+							signal is controlled by
+							following three
+							registers:</li>
+						<ul>
+							<li class="fragment" style="margin-bottom:24px">Clock Divider (<span
+									class="regName">DIV</span>) register</li>
+							<li class="fragment" style="margin-bottom:24px">Counting Period (<span
+									class="regName">TOP</span>) register
+							</li>
+							<li class="fragment" style="margin-bottom:24px">Counter Compare (<span
+									class="regName">CC</span>) register
+							</li>
+						</ul>
+					</ul>
+				</section>
+
+
+
+				<section data-auto-animate id="h0v2">
+					<h3 data-id="clkDivSlideTitle">Clock Divider</h3>
+					<p>
+					<ul style="font-size: 30px">
+						<li class="fragment" style="margin-top: 24px;">The <span class="regName">DIV</span> register is
+							divided into two parts,
+							an 8-bit integer
+							<input type="text" id="pwmClkDivRegInt" minlength="1" maxlength="3"
+								oninput="this.value = this.value.replace(/[^0-9]/, '')" size="3">
+							and a 4-bit fractional
+							<input type="text" id="pwmClkDivRegFrc" minlength="1" maxlength="2"
+								oninput="this.value = this.value.replace(/[^0-9]/, '')" size="2">
+						</li>
+						<li class="fragment" style="margin-top: 24px;">
+							The divided frequency can be calculated as \( f_{Div} = \frac{f_{Sys}}{\left(
+							DivRegIntVal + \frac{DivRegFrcVal}{16} \right)} \)
+						</li>
+					</ul>
+					</p>
+					<p>
+					<div style="margin-top: 24px;">
+						<div data-id="sysClock" id="pwmSysClk" style="display:inline-block; vertical-align: middle;">
+						</div>
+						<div data-id="clockDiv" id="pwmClkDiv"
+							style="background: rgba(245, 126, 36, 0.6); width: 100px; height: 100px; margin: 25px; border: 5px solid rgba(245, 126, 36, 1); border-radius: 20px; text-align: center; color: white; font-size: 24px; display: inline-block;vertical-align: middle;">
+						</div>
+						<div data-id="divClock" id="pwmDivClk" style="display:inline-block; vertical-align: middle;">
+						</div>
+					</div>
+					<div data-id="clkSldrs">
+						<div style="display:inline-block; vertical-align: middle;">
+							<label for="pwmSysClkFrqSldr" style="font-size:24px;">System
+								Clock Frequency</label>
+							<input type="range" min="1" step="0.1" max="40" id="pwmSysClkFrqSldr">
+							<output for="pwmSysClkFrqSldr" style="font-size:24px;"></output>
+						</div>
+						<div style="display:inline-block; margin-left: 100px; margin-right: 100px;"></div>
+						<div style="display:inline-block; vertical-align: middle;">
+							<label for="pwmClkDtSldr" style="font-size:24px;">Animation Speed</label>
+							<input type="range" min="0" step="0.0001" max="0.02" id="pwmClkDtSldr">
+						</div>
+					</div>
+					</p>
+				</section>
+
+
+
+				<section data-auto-animate id="h0v3">
+					<h3>Counting Period</h3>
+					<p>
+					<ul style="font-size: 30px">
+						<li class="fragment" style="margin-top: 24px;">The value of the 16-bit <span
+								class="regName">CTR</span> register
+							increases with each cycle of the frequency divided clock.</li>
+						<li class="fragment" style="margin-top: 24px;">The <span class="regName">CTR</span> register
+							overflows once
+							it reaches a value equal to
+							the <span class="regName">TOP</span> register.</li>
+						<li class="fragment" style="margin-top: 24px;">Time it takes for the <span
+								class="regName">CTR</span>
+							register to overflow, \( t_{PWM} = \frac{TopRegVal + 1}{f_{Div}} \), is the time period of a
+							PWM cycle.</li>
+					</ul>
+					</p>
+					<p>
+					<div style="margin-top: 24px;">
+						<div data-id="divClock" id="pwmDivClk2" style="display:inline-block; vertical-align: middle;">
+						</div>
+						<div style="display:inline-block; vertical-align: middle;">
+							<div data-id="pwmCtrReg" style="float:left; display:flex; flex-direction:column;">
+								<label for="pwmCtrReg" style="font-size:24px;"><span class="regName">CTR</span>
+									Register</label>
+								<input type="text" id="pwmCtrReg" size="10">
+							</div>
+							<div
+								style="float:left; display:flex; flex-direction:column; margin-left: 50px; margin-right: 50px;">
+								\(\leq\)
+							</div>
+							<div data-id="pwmTopReg" style="float:left; display:flex; flex-direction:column;">
+								<label for="pwmTopReg" style="font-size:24px;"><span class="regName">TOP</span>
+									Register</label>
+								<input type="text" id="pwmTopReg" minlength="1" maxlength="5"
+									oninput="this.value = this.value.replace(/[^0-9]/, '')" size="10">
+							</div>
+						</div>
+						<div data-id="clkSldrs">
+							<div style="display:inline-block; vertical-align: middle;">
+								<label for="pwmDivClkFrqSldr" style="font-size:24px;">Divided
+									Clock Frequency</label>
+								<input type="range" min="1" step="0.1" max="40" id="pwmDivClkFrqSldr">
+								<output for="pwmDivClkFrqSldr" style="font-size:24px;"></output>
+							</div>
+							<div style="display:inline-block; margin-left: 100px; margin-right: 100px;"></div>
+							<div style="display:inline-block; vertical-align: middle;">
+								<label for="pwmClkDtSldr2" style="font-size:24px;">Animation Speed</label>
+								<input type="range" min="0" step="0.0001" max="0.02" id="pwmClkDtSldr2">
+							</div>
+						</div>
+						</p>
+				</section>
+
+
+
+				<section data-auto-animate id="h0v4">
+					<h3>Counter Compare</h3>
+					<p>
+					<ul style="font-size: 30px">
+						<li class="fragment" style="margin-top: 24px;">Finally the value of the <span
+								class="regName">CC</span> register defines the logical HIGH and logical LOW time period
+							in one cycle.</li>
+						<li class="fragment" style="margin-top: 24px;">The PWM duty cycle can thus be defined as \(
+							D_{PWM} = \frac{T_{HIGH}}{T_{HIGH} + T_{LOW}} \cdot 100\% = \frac{CcRegVal}{TopRegVal} \cdot
+							100\% \)
+					</ul>
+					</p>
+					<p>
+					<div style="margin-top: 24px;">
+						<div style="display:inline-block; vertical-align: middle;">
+							<div data-id="pwmCcReg" style="float:left; display:flex; flex-direction:column;">
+								<label for="pwmCcReg" style="font-size:24px;"><span class="regName">CC</span>
+									Register</label>
+								<input type="text" id="pwmCcReg" minlength="1" maxlength="5"
+									oninput="this.value = this.value.replace(/[^0-9]/, '')" size="10">
+							</div><br>
+							<div data-id="pwmCtrReg" style="float:left; display:flex; flex-direction:column;">
+								<label for="pwmCtrReg2" style="font-size:24px;"><span class="regName">CTR</span>
+									Register</label>
+								<input type="text" id="pwmCtrReg2" size="10">
+							</div><br>
+							<div data-id="pwmTopReg" style="float:left; display:flex; flex-direction:column;">
+								<label for="pwmTopReg2" style="font-size:24px;"><span class="regName">TOP</span>
+									Register</label>
+								<input type="text" id="pwmTopReg2" minlength="1" maxlength="5"
+									oninput="this.value = this.value.replace(/[^0-9]/, '')" size="10">
+							</div>
+						</div>
+						<div data-id="pwmPwmOut" id="pwmPwmOut" style="display:inline-block; vertical-align: middle;">
+						</div>
+						<div data-id="clkSldrs">
+							<div style="display:inline-block; vertical-align: middle;">
+								<label for="pwmDivClkFrqSldr2" style="font-size:24px;">Divided
+									Clock Frequency</label>
+								<input type="range" min="100" step="0.1" max="1000" id="pwmDivClkFrqSldr2">
+								<output for="pwmDivClkFrqSldr2" style="font-size:24px;"></output>
+							</div>
+							<div style="display:inline-block; margin-left: 100px; margin-right: 100px;"></div>
+							<div style="display:inline-block; vertical-align: middle;">
+								<label for="pwmClkDtSldr3" style="font-size:24px;">Animation Speed</label>
+								<input type="range" min="0" step="0.0001" max="0.02" id="pwmClkDtSldr3">
+							</div>
+						</div>
+						</p>
+				</section>
+
+
+
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: false,
+
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Factor of the display size that should remain empty around
+			// the content
+			margin: 0.04,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+		}).then(() => initializeAnimations());
+		Reveal.on('slidechanged', event => processSlideChangeEvnt(event));
+	</script>
+</body>
+
+</html>
