@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>MAE3185 Presentation</title>
+
+	<meta name="description"
+		content="A presentation of all the topics discussed in the Introduction to Mechatronics class of the University of Texas at Arlington">
+	<meta name="author" content="Vatsal Joshi">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/mechatronics.css">
+
+	<!-- Add stylesheet for plotlyjs -->
+	<link rel="stylesheet" href="clockPlot.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<!-- Load plugin to write math equations -->
+<script src="plugin/math/math.js"></script>
+
+<!-- Load plotlyjs -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- Load homemade animation main script and other animation scripts -->
+<script src="jsAnim/jsAnim.js"></script>
+<script src="jsAnim/pwm/sysClk.js"></script>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-auto-animate>
+
+
+
+				<section data-auto-animate id="h0v0">
+					<h3>Pulsed Width Modulation</h3>
+					<div id="sysClk"></div>
+				</section>
+
+
+
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: false,
+
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Factor of the display size that should remain empty around
+			// the content
+			margin: 0.04,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+		});//.then(() => anim.initializeAnimations());
+		Reveal.on('slidechanged', event => anim.processSlideChangeEvnt(event));
+	</script>
+</body>
+
+</html>
