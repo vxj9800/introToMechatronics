@@ -20,16 +20,16 @@ section.has-light-background h6 {
  *********************************************/
 :root {
   --r-background-color: #191919;
-  --r-main-font: Garamond, Helvetica, sans-serif;
-  --r-main-font-size: 30px;
+  --r-main-font: Source Sans Pro, Helvetica, sans-serif;
+  --r-main-font-size: 42px;
   --r-main-color: #fff;
   --r-block-margin: 20px;
-  --r-heading-margin: 0 0 36px 0;
-  --r-heading-font: Garamond, Helvetica, sans-serif;
+  --r-heading-margin: 0 0 20px 0;
+  --r-heading-font: Source Sans Pro, Helvetica, sans-serif;
   --r-heading-color: #fff;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
-  /* --r-heading-text-transform: uppercase; */
+  --r-heading-text-transform: uppercase;
   --r-heading-text-shadow: none;
   --r-heading-font-weight: 600;
   --r-heading1-text-shadow: none;
@@ -121,7 +121,6 @@ section.has-light-background h6 {
 .reveal p {
   margin: var(--r-block-margin) 0;
   line-height: 1.3;
-  /* text-align: left; */
 }
 
 /* Remove trailing margins after titles */
@@ -362,25 +361,4 @@ section.has-light-background h6 {
   .backgrounds {
     background-color: var(--r-background-color);
   }
-}
-
-/*********************************************
- * Other custom CSS stuff
- *********************************************/
-.reveal input[type=text] {
-  display: inline-block;
-  /* margin: 0em auto; */
-  border: 2px solid var(--r-main-color);
-  border-radius: 5px;
-  padding: 0;
-  background: var(--r-background-color);
-  font-family: Courier, monospace;
-  font-size: 24px;
-  color: var(--r-main-color);
-  text-align: center;
-  height: 30px;
-}
-
-.regName {
-  font-family: Courier, monospace;
 }
