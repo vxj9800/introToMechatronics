@@ -32,10 +32,7 @@
 
 <!-- Load homemade animation main script and other animation scripts -->
 <script src="jsAnim/jsAnim.js"></script>
-<script src="jsAnim/stCurve.js"></script>
-<script src="jsAnim/vsMax.js"></script>
-<script src="jsAnim/stallTq.js"></script>
-<script src="jsAnim/noLoadSpeed.js"></script>
+<script src="jsAnim/sysClk.js"></script>
 
 <body>
 	<div class="reveal">
@@ -45,55 +42,26 @@
 
 
 				<section data-auto-animate id="h0v0">
-					<h3>Speed-Torque Curve</h3>
+					<h3>PID Control</h3>
 				</section>
 
 
 
 				<section data-auto-animate id="h0v1">
-					<h3>Speed-Torque Curve</h3>
-					<div class="r-stretch" style="display: flex;">
-						<div id="stCurve" class="fragment fade-right" data-fragment-index="1"
-							style="width: 50%; margin: 2%;">
+					<h3>PID Control</h3>
+					<div class="r-stretch"
+						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 50px;">
+						<div style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 2;">
+							Block animation goes here!
 						</div>
-						<div style="display: flex; flex-direction: column; text-align: left; width: 50%;">
-							<div style="margin: 1%;">
-								<p>
-									The equations that govern the torque generated in a motor are as follows
-									\[\tau \propto I \implies \tau = k_{\tau} \cdot I\]
-									\[V_{emf} \propto \omega \implies V_{emf} = k_{emf} \cdot \omega\]
-									\[I = \frac{\tau}{k_{\tau}} = \frac{V_s - V_{emf}}{R} = \frac{V_s -
-									k_{emf} \cdot \omega}{R}\]
-								</p>
-							</div>
-							<div class="fragment fade-up" data-fragment-index="1" style="margin: 1%;">
-								<p>The known quantities can be specified below:</p>
-								<div style="display: flex; flex-direction: row;">
-									<div style="display: flex; flex-direction: column; align-items: flex-start;">
-										<div
-											style="display: flex; flex-direction: row; align-content: center; justify-content: center;">
-											<label for="stallTq">\(\tau_{stall} = \)</label>
-											<input type="number" id="stallTq" style="margin-left: 10px;" min="0.001"
-												max="0.02" step="0.001" required size="4">Nm
-										</div>
-										<div
-											style="display: flex; flex-direction: row; align-content: center; justify-content: center;">
-											<label for="noLoadSpeed">\(\omega_{No-Load} = \)</label>
-											<input type="number" id="noLoadSpeed" style="margin-left: 10px;" min="100"
-												max="800" step="0.1" required size="4">rad/s
-										</div>
-									</div>
-									<div
-										style="align-self: center; margin-top: -10px; text-align: center; vertical-align: middle;">
-										<span style="font-size: 70px;">\(\}\)</span>@
-										<div style="display:inline-flex;">
-											<label for="vsMax">\(V_{{s}_{max}}\) = </label>
-											<input type="number" id="vsMax" style="margin-left: 10px;" min="0.01"
-												max="12.0" step="0.01" required size="4">V
-										</div>
-									</div>
-								</div>
-							</div>
+						<div id="sysClk"
+							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2;">
+						</div>
+						<div style="grid-row-start: 1; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3;">
+							Text goes here!
+						</div>
+						<div style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 1; grid-column-end: 3;">
+							Animation controls go here!
 						</div>
 					</div>
 				</section>
@@ -126,8 +94,14 @@
 			margin: 0.04,
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3]
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3],
 		});
+		Reveal.addKeyBinding({ keyCode: 32, key: 'space', descriptio: 'Play or Pause the animations' }, animControl.playPauseAnim.bind(animControl));
+		Reveal.registerKeyboardShortcut('SPACE', 'Play or Pause the animations');
+		Reveal.addKeyBinding({ keyCode: 82, key: 'R', descriptio: 'Reset the animations' }, animControl.callResetFuns.bind(animControl));
+		Reveal.addKeyBinding({ keyCode: 188, key: '<', descriptio: 'Slow down the animations' }, animControl.decreaseAnimUpdateDt.bind(animControl));
+		Reveal.addKeyBinding({ keyCode: 190, key: '>', descriptio: 'Speed up the animations' }, animControl.increaseAnimUpdateDt.bind(animControl));
+		Reveal.on('slidechanged', animControl.callResetFuns.bind(animControl));
 	</script>
 </body>
 
