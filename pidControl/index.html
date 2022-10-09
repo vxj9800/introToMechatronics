@@ -33,6 +33,7 @@
 <!-- Load homemade animation main script and other animation scripts -->
 <script src="jsAnim/jsAnim.js"></script>
 <script src="jsAnim/sysClk.js"></script>
+<script src="jsAnim/bulbGlow.js"></script>
 
 <body>
 	<div class="reveal">
@@ -42,12 +43,150 @@
 
 
 				<section data-auto-animate id="h0v0">
-					<h3>PID Control</h3>
+					<h3>Introduction to Control</h3>
 				</section>
 
 
 
 				<section data-auto-animate id="h0v1">
+					<h3>Open-Loop Control</h3>
+					<div class="r-stretch"
+						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 100px;">
+						<div
+							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center; border-radius: 30px; background: #ffffff80; border: 3px solid #ffffff;">
+							<svg width="600" height="300" viewBox="-10 0 515 221">
+								<style type="text/css">
+									.st1 {
+										font-family: 'Garamond';
+										font-size: 30px;
+										text-align: end;
+									}
+
+									.st3 {
+										fill: none;
+										stroke: #000000;
+										stroke-width: 3;
+										stroke-linecap: round;
+										stroke-linejoin: round;
+										stroke-miterlimit: 10;
+									}
+								</style>
+								<g id="bulbGlow">
+
+									<radialGradient id="bulbLight" cx="404.7" cy="110.3" r="110.3"
+										gradientUnits="userSpaceOnUse">
+										<stop offset="0" style="stop-color:#ffff00" />
+										<stop offset="1" style="stop-color:#ffff0000" />
+									</radialGradient>
+
+									<circle id="glow" style="fill:url(#bulbLight);" cx="404.7" cy="110.3" r="110.3" />
+								</g>
+								<g id="voltage">
+									<text id="volts" transform="translate(0 95)" class="st1">1.0V</text>
+								</g>
+								<g id="bulbCircuit">
+									<g id="circuit">
+										<path d="M184.1,126.7c-9.1,0-16.4-7.3-16.4-16.4s7.3-16.4,16.4-16.4" />
+										<g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+											<path
+												d="M4870.6,11755.8c-8.9,120.3-34.5,227.6-78.8,331.7c-89.8,211-253.9,384.7-455.5,482c-94.5,45.5-188.7,72.2-297.7,84.6
+												c-40.6,4.5-132.9,4-164.1-1.2c-96.6-15.9-192.7-52.7-314.4-120.7c-45.7-25.3-83.7-48.1-195.5-115.8
+												c-143.7-87.2-218-125.2-296.8-151.7c-60.5-20.6-97.5-27-168.6-29.5c-102.2-3.8-159.9-26.7-236.3-94.5l-24.6-21.6h-42.4h-42.2
+												l-8-7c-4.5-3.8-13.6-17.6-20.4-30.5c-15.2-29.1-24.1-37.5-39.2-37.5c-9.4,0-12,1.2-19.2,8.9c-4.7,4.9-13.4,18.5-19.7,30.2
+												c-13.6,26.3-23.7,35.9-37.3,35.9s-22.7-7.7-33.5-28.6c-19.2-36.8-28.1-46.4-43.4-46.4c-15.7,0-24.1,8.4-40.8,41.7
+												c-4.7,9.1-12.2,20.4-16.6,25.1c-7,6.8-10.1,8.2-18.3,8.2c-9.6,0-18.5-4.2-24.4-11.7c-1.6-1.9-8.4-13.6-15.2-25.8
+												c-6.6-12.2-15.7-25.8-19.9-30c-6.8-6.3-9.8-7.5-19.5-7.5c-14.1,0-21.1,5.4-39.2,30c-7,9.4-16.2,19.2-20.2,21.8
+												c-10.5,6.3-22.5,5.6-33.5-1.6c-4.9-3.3-37.5-34.7-72.4-69.9c-63.8-64.2-90.5-87-125.7-106.9l-15-8.4l-0.7-211.5l-0.5-211.7l7.3-4
+												c42-22.7,79-53.9,143.5-120.7c28.1-29.1,56-56.3,61.9-60c20.6-13.6,34.7-8.9,55.3,19c18.1,24.6,25.1,30,39.2,30
+												c15.2,0,23.4-8,39.4-38c15.2-28.1,24.6-37,39.2-37c8.7,0,11.7,1.4,18.8,8.2c4.5,4.7,12,15.9,16.6,25.1
+												c16.6,33.3,25.1,41.7,40.8,41.7c15.2,0,24.1-9.6,43.4-46.4c10.8-20.9,19.9-28.6,33.5-28.6s23.7,9.6,37.3,35.9
+												c6.3,11.7,15,25.3,19.7,30.2c7.3,7.7,9.8,8.9,19.2,8.9c15,0,23.9-8.4,39.2-37.5c6.8-12.9,15.9-26.7,20.4-30.5l8-7h42.7h42.7
+												l23.4-21.1c30-27.2,53.7-44.1,81.1-58.4c46.4-24.4,87.9-34,155.7-36.6c71.3-2.6,108.1-8.9,168.6-29.5
+												c84.4-28.4,149.8-62.6,330.8-172.1c119.3-72.4,162.2-97.1,220.4-126.6c95.7-48.5,174.2-76.2,255.5-89.6
+												c31.4-5.2,123.5-5.6,165.3-0.9c109.2,12.2,210.8,41.7,304.1,88.1c268.4,133.4,457.6,389.9,512.7,695.1
+												c3.3,18.8,7.7,48.8,9.8,66.8C4869.7,11621.9,4872.5,11729,4870.6,11755.8z M4733.5,11611.6c-19.9-238.2-131.5-459.5-304.1-603.4
+												c-131.5-109.7-287.4-169.5-456.5-175.4c-102.2-3.5-192.7,20.6-330.6,88.4c-51.8,25.6-83.2,42.7-196.9,107.8
+												c-186.6,106.7-267,146.1-357.5,175.4c-64,20.6-104.1,27.9-172.3,30.9c-56.7,2.6-82.3,6.3-114.2,17.3
+												c-29.8,10.1-45.9,19.9-66.8,40.6l-17.1,16.9v387.1v387.1l17.1,16.9c20.6,20.4,40.3,32.4,68.9,41.5c31.9,10.3,57,13.8,112.1,16.4
+												c69.4,3,108.5,10.3,175.8,32.1c88.4,28.8,165.3,66.6,351.7,173c116.8,66.6,147.5,83.5,199.3,109
+												c137.1,67.5,228.3,91.9,330.6,88.4c324.5-11.3,601.3-227.2,714.1-557.3C4729.2,11881.4,4744.9,11747.6,4733.5,11611.6z" />
+											<path d="M4171.7,12102.5c-37.5,9.8-140.2,34.9-140.9,34.5c-0.2-0.5,16.9-12.7,38.2-27.2c21.3-14.3,38.7-27,38.7-27.7
+												c0-0.9-35.6-14.3-79.2-29.8l-79-28.1l-0.7-19c-0.7-19-0.7-19,5.9-21.6c3.5-1.6,39.2-14.3,79-28.6c39.9-14.1,72.9-26.3,73.6-27
+												c0.7-0.5-0.2-1.6-2.1-2.3c-25.3-9.1-155.4-55.1-156.1-55.1c-0.2,0-0.7-8.7-0.7-19.5v-19.2l78.1-27.9
+												c42.7-15.2,78.5-28.4,79.5-29.3c1.2-0.9-33.8-14.3-77.4-29.8l-79-28.4v-19.5v-19.5l79.2-28.1c43.4-15.7,78.3-29.1,77.4-30
+												c-1.2-0.9-37-14.1-79.7-29.3l-78.1-27.9v-19.1c0-10.8,0.5-19.5,0.7-19.5c0.7,0,130.8-45.9,156.1-55.1c1.9-0.7,2.8-1.9,2.1-2.3
+												c-0.7-0.7-33.8-12.9-73.6-27c-39.9-14.3-75.5-27-79-28.6c-6.6-2.6-6.6-2.6-5.9-21.6l0.7-19l79-28.1
+												c43.6-15.5,79.2-28.8,79.2-29.8c0-0.7-17.3-13.4-38.7-27.7c-21.3-14.5-38.4-26.7-38.2-27.2c0.7-0.5,103.4,24.6,140.9,34.5
+												l8.9,2.3l-0.7,19l-0.7,19l-79.2,28.1c-43.6,15.5-78.3,29.1-77.4,30c0.9,0.9,33.5,12.9,72.2,26.7c38.7,13.8,73.8,26.5,78.1,28.1
+												l7.5,3.3v18.5v18.5l-74.3,26.5c-41,14.5-77.1,27.4-80.4,28.6c-4.7,1.9-5.2,2.6-2.3,4.2c1.9,0.9,36.8,13.6,77.4,28.1
+												s75.3,27,76.9,27.4c2.1,0.9,2.8,6.3,2.3,20.2l-0.7,19l-79,28.4c-43.6,15.5-79.2,28.6-79.2,29.3c0,0.7,35.6,13.8,79.2,29.3
+												l79,28.4l0.7,19c0.5,13.8-0.2,19.2-2.3,20.2c-1.6,0.5-36.3,12.9-76.9,27.4s-75.5,27.2-77.4,28.1c-2.8,1.6-2.3,2.3,2.3,4.2
+												c3.3,1.2,39.4,14.1,80.4,28.6l74.3,26.5v18.5v18.5l-7.5,3.3c-4.2,1.6-39.4,14.3-78.1,28.1c-38.7,13.8-71.3,25.8-72.2,26.7
+												c-0.9,0.9,33.8,14.5,77.4,30l79.2,28.1l0.7,19l0.7,19L4171.7,12102.5z" />
+											<path d="M4037.9,12212.2c-6.1,12-12,21.8-13.1,21.8c-1.2,0-148.9-68.9-328.2-153.3l-326.1-153.1l-268.4-8.7
+												c-147.7-4.7-277.1-9.1-287.7-9.8l-19.5-1.4v-42.2v-42.2l21.8,1.4c11.7,0.9,71.7,3.8,132.9,6.3c61.2,2.6,189.9,8.2,286,12.4
+												l174.7,7.5l317.7,168.3c174.7,92.6,318.4,169,319.1,169.7C4048,12189.9,4043.7,12200.5,4037.9,12212.2z" />
+											<path d="M4032,11213.7c-9.4,5.2-152.9,81.3-319.3,169.5l-302.4,160.1l-174.7,7.5c-96.1,4.2-224.8,9.8-286,12.4
+												c-61.2,2.6-121.2,5.4-133.2,6.3l-21.6,1.4v-42.2v-42.2l20.6-1.4c11.3-0.7,140.7-5.2,287.7-9.8l267.3-8.7l291.9-137.1
+												c369.9-173.7,360.3-169.3,362.7-169.3c1.2,0,7,10.1,12.9,22l11,22.3L4032,11213.7z" />
+										</g>
+										<line class="st3" x1="11.8" y1="106" x2="89.6" y2="106" />
+										<line class="st3" x1="31.2" y1="120" x2="70.1" y2="120" />
+										<path class="st3"
+											d="M50.6,106V29.3c0-8.3,6.7-15,15-15h50.6c8.3,0,15,6.7,15,15v66c0,8.3,6.7,15,15,15h21.5" />
+										<path class="st3"
+											d="M50.6,120v71.3c0,8.3,6.7,15,15,15h144.2c8.3,0,15-6.7,15-15v-38.8" />
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div id="bulbIlumPlot"
+							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3;">
+						</div>
+						<div style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 1; grid-column-end: 3;">
+							<label for="voltageVal">Voltage: </label>
+							<input id="voltageVal" type="range" style="width: 500px;" value="0.1" min="0" max="1"
+								step="0.01">
+						</div>
+					</div>
+					<aside class="notes">
+						Open-Loop Control<br>
+						Create an example of a bulb driven by variable voltage. Provide circuit of voltage input to the
+						bulb. Provide a slider to change the input voltage. And provide a graph of voltage vs
+						illumination with the current data point visualized.
+					</aside>
+				</section>
+
+
+
+				<section data-auto-animate id="h0v2">
+					<h3>Closed-Loop Control</h3>
+					<div class="r-stretch">
+
+					</div>
+					<aside class="notes">
+						Closed-Loop Control<br>
+						Create the same block sliding on a slope example. Provide a slider to control the throttle
+						value. Provide a plot of time vs block position with setpoint shown as a dashed line.
+					</aside>
+				</section>
+
+
+
+				<section data-auto-animate id="h0v3">
+					<h3>Terminology</h3>
+					<div class="r-stretch">
+
+					</div>
+					<aside class="notes">
+						Terminology<br>
+						System State, Set-point or Desired State, Error, Input, Output
+					</aside>
+				</section>
+
+
+
+				<section data-auto-animate id="h0v4">
 					<h3>PID Control</h3>
 					<div class="r-stretch"
 						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 50px;">
@@ -64,6 +203,20 @@
 							Animation controls go here!
 						</div>
 					</div>
+				</section>
+
+
+
+				<section data-auto-animate id="h0v5">
+					<h3>Cautions</h3>
+					<div class="r-stretch">
+
+					</div>
+					<aside class="notes">
+						Cautions<br>
+						Limit on the input values, Relation between output and error, Over or underflow of the integral
+						control.
+					</aside>
 				</section>
 
 
@@ -96,12 +249,13 @@
 			// Learn about plugins: https://revealjs.com/plugins/
 			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3],
 		});
+		Reveal.on('ready', animControl.handleSlidesReady.bind(animControl));
+		Reveal.on('slidechanged', animControl.handleSlideChange.bind(animControl));
 		Reveal.addKeyBinding({ keyCode: 32, key: 'space', descriptio: 'Play or Pause the animations' }, animControl.playPauseAnim.bind(animControl));
 		Reveal.registerKeyboardShortcut('SPACE', 'Play or Pause the animations');
 		Reveal.addKeyBinding({ keyCode: 82, key: 'R', descriptio: 'Reset the animations' }, animControl.callResetFuns.bind(animControl));
 		Reveal.addKeyBinding({ keyCode: 188, key: '<', descriptio: 'Slow down the animations' }, animControl.decreaseAnimUpdateDt.bind(animControl));
 		Reveal.addKeyBinding({ keyCode: 190, key: '>', descriptio: 'Speed up the animations' }, animControl.increaseAnimUpdateDt.bind(animControl));
-		Reveal.on('slidechanged', animControl.callResetFuns.bind(animControl));
 	</script>
 </body>
 

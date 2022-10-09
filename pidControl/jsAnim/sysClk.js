@@ -57,10 +57,12 @@ let sysClk = new anim('sysClk',
         initpwmSysClkData();
         Plotly.newPlot(sysClk.id, sysClk.data.data, sysClk.data.layout, sysClk.data.config);
     },
+    () => { },
     (i) => {
         Plotly.update(sysClk.id, sysClk.data.data, sysClk.data.layout, sysClk.data.config);
         computepwmSysClkData(i);
     },
+    () => { },
     () => {
         sysClk.data.dt = 0.016;
         sysClk.data.clkFrq = 10;
