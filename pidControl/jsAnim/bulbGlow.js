@@ -78,13 +78,20 @@ let bulbIlumPlot = new anim('bulbIlumPlot',
 
         // Plot layout
         layout: {
-            title: 'Bulb Voltage vs. Illumination',
-            titlefont: {
-                family: 'Garamond,serif',
-                size: 24,
-                color: 'white',
-            },
+            // title: 'Bulb Voltage vs. Illumination',
+            // titlefont: {
+            //     family: 'Garamond,serif',
+            //     size: 24,
+            //     color: 'white',
+            // },
             autosize: true,
+            margin: {
+                l: 70,
+                r: 10,
+                b: 70,
+                t: 10,
+                pad: 0,
+            },
             xaxis: {
                 title: 'Voltage (V)',
                 titlefont: {
@@ -92,6 +99,7 @@ let bulbIlumPlot = new anim('bulbIlumPlot',
                     size: 20,
                     color: 'white',
                 },
+                gridcolor: '#505050',
                 range: [0, 12],
                 tickcolor: '#fff',
                 tickfont: { family: 'Garamond,serif', size: 20, color: '#fff' },
@@ -103,6 +111,7 @@ let bulbIlumPlot = new anim('bulbIlumPlot',
                     size: 20,
                     color: 'white',
                 },
+                gridcolor: '#505050',
                 range: [0, 1],
                 showticklabels: false,
             },
@@ -112,6 +121,7 @@ let bulbIlumPlot = new anim('bulbIlumPlot',
         },
 
         config: {
+            staticPlot: true,
             displayModeBar: false,
             scrollZoom: false,
         }
@@ -146,5 +156,5 @@ function updatebulbIlumPlotPlot(i) {
     voltageRangeElem = document.getElementById("voltageVal");
     bulbIlumPlot.data.data[1].x[0] = voltageRangeElem.value * 12;
     bulbIlumPlot.data.data[1].y[0] = voltageRangeElem.value ** 3;
-    Plotly.update(bulbIlumPlot.id, bulbIlumPlot.data.data, bulbIlumPlot.data.layout, bulbIlumPlot.data.config);
+    Plotly.update(bulbIlumPlot.id, bulbIlumPlot.data.data, bulbIlumPlot.data.layout);
 }

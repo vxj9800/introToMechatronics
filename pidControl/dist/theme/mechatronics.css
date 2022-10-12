@@ -381,6 +381,24 @@ section.has-light-background h6 {
   height: 30px;
 }
 
+/* Css for numerical input */
+.reveal input::-webkit-outer-spin-button,
+.reveal input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.reveal input[type=number] {
+  -moz-appearance: textfield;
+  border: 2px solid var(--r-main-color);
+  border-radius: 5px;
+  padding: 0;
+  background: var(--r-background-color);
+  font-family: Courier, monospace;
+  color: var(--r-main-color);
+  text-align: center;
+}
+
 .regName {
   font-family: Courier, monospace;
 }

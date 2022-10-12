@@ -34,7 +34,7 @@ class globalAnimControl {
     #callUpdateFuns() {
         this.#animUpdateCounter += this.#animUpdateDt;
         for (let i = 0; i < this.#onThisSlideElemIdxs.length; ++i)
-            this.#animUpdate[this.#onThisSlideElemIdxs[i]](this.#animUpdateCounter);
+            this.#animUpdate[this.#onThisSlideElemIdxs[i]](this.#animUpdateCounter, this.#animUpdateDt);
     }
 
     // Function to call the play functions of the animations that are on the current slide
@@ -78,6 +78,7 @@ class globalAnimControl {
 
     // Function to handle the slide change event
     handleSlideChange() {
+        window.dispatchEvent(new Event('resize'));
         this.callResetFuns();
         this.#getCurrentElemIdxs();
     }

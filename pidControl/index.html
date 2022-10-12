@@ -32,39 +32,43 @@
 
 <!-- Load homemade animation main script and other animation scripts -->
 <script src="jsAnim/jsAnim.js"></script>
-<script src="jsAnim/sysClk.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.2/math.js"></script>
 <script src="jsAnim/bulbGlow.js"></script>
+<script src="jsAnim/h0v2.js"></script>
+<script src="jsAnim/h0v3.js"></script>
+<script src="jsAnim/h0v4.js"></script>
 
 <body>
 	<div class="reveal">
 		<div class="slides">
-			<section data-auto-animate>
+			<section>
 
 
 
-				<section data-auto-animate id="h0v0">
+				<section id="h0v0">
 					<h3>Introduction to Control</h3>
 				</section>
 
 
 
-				<section data-auto-animate id="h0v1">
+				<section id="h0v1">
 					<h3>Open-Loop Control</h3>
 					<div class="r-stretch"
-						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 100px;">
-						<div
-							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center; border-radius: 30px; background: #ffffff80; border: 3px solid #ffffff;">
+						style="display: grid; gap: 10px; grid-template-columns: 1fr 0.6fr; grid-template-rows: 1fr 0.8fr 50px;">
+						<div class="fragment fade-left" data-fragment-index="1"
+							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; justify-self: center; align-self: center;">
 							<svg width="600" height="300" viewBox="-10 0 515 221">
 								<style type="text/css">
-									.st1 {
+									.bulbSt1 {
 										font-family: 'Garamond';
-										font-size: 30px;
+										font-size: 24px;
 										text-align: end;
+										fill: #ffffff;
 									}
 
-									.st3 {
+									.bulbSt3 {
 										fill: none;
-										stroke: #000000;
+										stroke: #ffffff;
 										stroke-width: 3;
 										stroke-linecap: round;
 										stroke-linejoin: round;
@@ -82,10 +86,10 @@
 									<circle id="glow" style="fill:url(#bulbLight);" cx="404.7" cy="110.3" r="110.3" />
 								</g>
 								<g id="voltage">
-									<text id="volts" transform="translate(0 95)" class="st1">1.0V</text>
+									<text id="volts" transform="translate(-10 95)" class="bulbSt1">1.0V</text>
 								</g>
 								<g id="bulbCircuit">
-									<g id="circuit">
+									<g id="circuit" style="fill:#ffffff">
 										<path d="M184.1,126.7c-9.1,0-16.4-7.3-16.4-16.4s7.3-16.4,16.4-16.4" />
 										<g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
 											<path
@@ -130,23 +134,111 @@
 												c-61.2,2.6-121.2,5.4-133.2,6.3l-21.6,1.4v-42.2v-42.2l20.6-1.4c11.3-0.7,140.7-5.2,287.7-9.8l267.3-8.7l291.9-137.1
 												c369.9-173.7,360.3-169.3,362.7-169.3c1.2,0,7,10.1,12.9,22l11,22.3L4032,11213.7z" />
 										</g>
-										<line class="st3" x1="11.8" y1="106" x2="89.6" y2="106" />
-										<line class="st3" x1="31.2" y1="120" x2="70.1" y2="120" />
-										<path class="st3"
+										<line class="bulbSt3" x1="11.8" y1="106" x2="89.6" y2="106" />
+										<line class="bulbSt3" x1="31.2" y1="120" x2="70.1" y2="120" />
+										<path class="bulbSt3"
 											d="M50.6,106V29.3c0-8.3,6.7-15,15-15h50.6c8.3,0,15,6.7,15,15v66c0,8.3,6.7,15,15,15h21.5" />
-										<path class="st3"
+										<path class="bulbSt3"
 											d="M50.6,120v71.3c0,8.3,6.7,15,15,15h144.2c8.3,0,15-6.7,15-15v-38.8" />
 									</g>
 								</g>
 							</svg>
 						</div>
-						<div id="bulbIlumPlot"
-							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3;">
+						<div id="bulbIlumPlot" class="fragment fade-left" data-fragment-index="1"
+							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 600px; height: 250px;">
 						</div>
-						<div style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 1; grid-column-end: 3;">
+						<div class="fragment fade-up" data-fragment-index="1"
+							style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 1; grid-column-end: 3;">
 							<label for="voltageVal">Voltage: </label>
 							<input id="voltageVal" type="range" style="width: 500px;" value="0.1" min="0" max="1"
 								step="0.01">
+						</div>
+						<div
+							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
+							<svg width="700" height="200" viewbox="0 0 500 103">
+								<style type="text/css">
+									.st0 {
+										fill: none;
+										stroke: #ffffff;
+										stroke-linecap: round;
+										stroke-linejoin: round;
+									}
+
+									.st1 {
+										fill: #ffffff;
+										font-family: 'Garamond';
+										font-size: 18.3375px;
+									}
+
+									.st2 {
+										fill: #ffffff;
+									}
+
+									.st4 {
+										fill: #ffffff;
+										font-family: 'Garamond-Bold';
+										font-size: 12.225px;
+									}
+
+									.st6 {
+										fill: none;
+										stroke: #ffffff;
+										stroke-linecap: round;
+										stroke-linejoin: round;
+										stroke-miterlimit: 10;
+									}
+								</style>
+								<g>
+									<g>
+										<line class="st0" x1="55.5" y1="21.5" x2="142.1" y2="21.5" />
+										<g>
+											<path class="st2"
+												d="M140.3,21.5l-2.2-3.6l0.1-0.1l5.9,2.3c2,0.5,4.1,0.9,6.1,1.4c-2,0.5-4.1,0.9-6.1,1.4l-5.9,2.3l-0.1-0.1L140.3,21.5z" />
+										</g>
+									</g>
+								</g>
+								<text transform="matrix(1 0 0 1 55 15.1597)">
+									<tspan x="0" y="0" class="st1">Reference</tspan>
+									<tspan x="15.8" y="22" class="st1">Input</tspan>
+								</text>
+								<path class="st6" d="M224.8,36.1h-67.5c-3.8,0-6.9-3.1-6.9-6.9V13.7c0-3.8,3.1-6.9,6.9-6.9h67.5c3.8,0,6.9,3.1,6.9,6.9v15.5
+																							C231.7,33,228.6,36.1,224.8,36.1z" />
+								<text transform="matrix(1 0 0 1 153.8672 27.2134)" class="st1">Controller</text>
+								<g>
+									<g>
+										<line class="st0" x1="231.7" y1="21.5" x2="307.6" y2="21.5" />
+										<g>
+											<path class="st2"
+												d="M305.8,21.5l-2.2-3.6l0.1-0.1l5.9,2.3c2,0.5,4.1,0.9,6.1,1.4c-2,0.5-4.1,0.9-6.1,1.4l-5.9,2.3l-0.1-0.1L305.8,21.5z" />
+										</g>
+									</g>
+								</g>
+								<text transform="matrix(1 0 0 1 237.4282 14.9365)">
+									<tspan x="0" y="0" class="st1">Control</tspan>
+									<tspan x="6.6" y="22" class="st1">Signal</tspan>
+								</text>
+								<path class="st6" d="M372.9,36.1h-50.2c-3.8,0-6.9-3.1-6.9-6.9V13.7c0-3.8,3.1-6.9,6.9-6.9h50.2c3.8,0,6.9,3.1,6.9,6.9v15.5
+																							C379.8,33,376.7,36.1,372.9,36.1z" />
+								<text transform="matrix(1 0 0 1 328.4189 27.2134)" class="st1">Plant</text>
+								<g>
+									<g>
+										<line class="st0" x1="379.8" y1="21.5" x2="452" y2="21.5" />
+										<g>
+											<path class="st2"
+												d="M450.2,21.5l-2.2-3.6l0.1-0.1l5.9,2.3c2,0.5,4.1,0.9,6.1,1.4c-2,0.5-4.1,0.9-6.1,1.4l-5.9,2.3l-0.1-0.1L450.2,21.5z" />
+										</g>
+									</g>
+								</g>
+								<text transform="matrix(1 0 0 1 383.4951 14.936)" class="st1">Output</text>
+							</svg>
+						</div>
+						<div
+							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
+							<ul>
+								<li>A</li>
+								<li>B</li>
+								<li>C</li>
+							</ul>
 						</div>
 					</div>
 					<aside class="notes">
@@ -159,10 +251,156 @@
 
 
 
-				<section data-auto-animate id="h0v2">
+				<section id="h0v2">
 					<h3>Closed-Loop Control</h3>
-					<div class="r-stretch">
+					<div class="r-stretch"
+						style="display: grid; gap: 10px; grid-template-columns: 1fr 0.6fr; grid-template-rows: 1fr 1fr 100px;">
+						<div id="h0v2blockAnim" class="fragment fade-left" data-fragment-index="1"
+							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 250px;">
+						</div>
+						<div id="h0v2blockPosPlot" class="fragment fade-left" data-fragment-index="1"
+							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 250px;">
+						</div>
+						<div class="fragment fade-up" data-fragment-index="1"
+							style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 1; grid-column-end: 3; justify-self: center;">
+							<div>
+								<label for="h0v2throttle">Throttle: </label>
+								<div style="display: inline-flex; flex-direction:column; vertical-align: middle;">
+									<output for="h0v2throttle" id="h0v2throttleOutput">4.9</output>
+									<input id="h0v2throttle" type="range" style="width: 500px;" value="4.9" min="-10"
+										max="10" step="0.01" list="h0v2throttleVals"
+										oninput="document.getElementById('h0v2throttleOutput').value = Number(document.getElementById('h0v2throttle').value).toFixed(2)">
+									<datalist id="h0v2throttleVals"
+										style="display: inline-flex; justify-content: space-between;">
+										<option>-10</option>
+										<option>+10</option>
+									</datalist>
+								</div>
+							</div>
+						</div>
+						<div
+							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
+							<svg width="700" height="200" viewbox="0 0 500 103">
+								<style type="text/css">
+									.st0 {
+										fill: none;
+										stroke: #ffffff;
+										stroke-linecap: round;
+										stroke-linejoin: round;
+									}
 
+									.st1 {
+										fill: #ffffff;
+										font-family: 'Garamond';
+										font-size: 18.3375px;
+									}
+
+									.st2 {
+										fill: #ffffff;
+									}
+
+									.st4 {
+										fill: #ffffff;
+										font-family: 'Garamond-Bold';
+										font-size: 12.225px;
+									}
+
+									.st6 {
+										fill: none;
+										stroke: #ffffff;
+										stroke-linecap: round;
+										stroke-linejoin: round;
+										stroke-miterlimit: 10;
+									}
+								</style>
+								<g>
+									<g>
+										<line class="st0" x1="0.5" y1="21.5" x2="87.1" y2="21.5" />
+										<g>
+											<path class="st2"
+												d="M85.3,21.5l-2.2-3.6l0.1-0.1l5.9,2.3c2,0.5,4.1,0.9,6.1,1.4c-2,0.5-4.1,0.9-6.1,1.4l-5.9,2.3l-0.1-0.1L85.3,21.5z" />
+										</g>
+									</g>
+								</g>
+								<text transform="matrix(1 0 0 1 0 15.1597)">
+									<tspan x="0" y="0" class="st1">Reference</tspan>
+									<tspan x="15.8" y="22" class="st1">Input</tspan>
+								</text>
+								<circle class="st0" cx="109.8" cy="21.5" r="14.6" />
+								<line class="st0" x1="99.5" y1="11.2" x2="120.2" y2="31.8" />
+								<line class="st0" x1="99.5" y1="31.8" x2="120.2" y2="11.2" />
+								<text transform="matrix(1 0 0 1 97.31 25.2451)" class="st4">+</text>
+								<text transform="matrix(1 0 0 1 107.8052 33.5874)" class="st4">-</text>
+								<g>
+									<g>
+										<line class="st0" x1="124.4" y1="21.5" x2="182.3" y2="21.5" />
+										<g>
+											<path class="st2"
+												d="M180.5,21.5l-2.2-3.6l0.1-0.1l5.9,2.3c2,0.5,4.1,0.9,6.1,1.4c-2,0.5-4.1,0.9-6.1,1.4l-5.9,2.3l-0.1-0.1L180.5,21.5z" />
+										</g>
+									</g>
+								</g>
+								<text transform="matrix(1 0 0 1 128.4541 15.1602)" class="st1">Error</text>
+								<path class="st6" d="M264.8,36.1h-67.5c-3.8,0-6.9-3.1-6.9-6.9V13.7c0-3.8,3.1-6.9,6.9-6.9h67.5c3.8,0,6.9,3.1,6.9,6.9v15.5
+																C271.7,33,268.6,36.1,264.8,36.1z" />
+								<text transform="matrix(1 0 0 1 193.8672 27.2134)" class="st1">Controller</text>
+								<g>
+									<g>
+										<line class="st0" x1="271.7" y1="21.5" x2="347.6" y2="21.5" />
+										<g>
+											<path class="st2"
+												d="M345.8,21.5l-2.2-3.6l0.1-0.1l5.9,2.3c2,0.5,4.1,0.9,6.1,1.4c-2,0.5-4.1,0.9-6.1,1.4l-5.9,2.3l-0.1-0.1L345.8,21.5z" />
+										</g>
+									</g>
+								</g>
+								<text transform="matrix(1 0 0 1 277.4282 14.9365)">
+									<tspan x="0" y="0" class="st1">Control</tspan>
+									<tspan x="6.6" y="22" class="st1">Signal</tspan>
+								</text>
+								<path class="st6" d="M412.9,36.1h-50.2c-3.8,0-6.9-3.1-6.9-6.9V13.7c0-3.8,3.1-6.9,6.9-6.9h50.2c3.8,0,6.9,3.1,6.9,6.9v15.5
+																C419.8,33,416.7,36.1,412.9,36.1z" />
+								<text transform="matrix(1 0 0 1 368.4189 27.2134)" class="st1">Plant</text>
+								<g>
+									<g>
+										<line class="st0" x1="419.8" y1="21.5" x2="492" y2="21.5" />
+										<g>
+											<path class="st2"
+												d="M490.2,21.5l-2.2-3.6l0.1-0.1l5.9,2.3c2,0.5,4.1,0.9,6.1,1.4c-2,0.5-4.1,0.9-6.1,1.4l-5.9,2.3l-0.1-0.1L490.2,21.5z" />
+										</g>
+									</g>
+								</g>
+								<text transform="matrix(1 0 0 1 423.4951 14.936)" class="st1">Output</text>
+								<path class="st6" d="M325.9,103.4h-67.5c-3.8,0-6.9-3.1-6.9-6.9V81c0-3.8,3.1-6.9,6.9-6.9h67.5c3.8,0,6.9,3.1,6.9,6.9v15.5
+																C332.8,100.3,329.7,103.4,325.9,103.4z" />
+								<text transform="matrix(1 0 0 1 269.2173 94.4888)" class="st1">Sensor</text>
+								<g>
+									<g>
+										<path class="st0" d="M251.5,88.8H125.1c-8.4,0-15.3-6.8-15.3-15.3V45.1" />
+										<g>
+											<path class="st2"
+												d="M109.8,46.9l-3.6,2.2l-0.1-0.1l2.3-5.9c0.5-2,0.9-4.1,1.4-6.1c0.5,2,0.9,4.1,1.4,6.1l2.3,5.9l-0.1,0.1L109.8,46.9z" />
+										</g>
+									</g>
+								</g>
+								<g>
+									<g>
+										<path class="st0" d="M460,21.5v52c0,8.4-6.8,15.3-15.3,15.3H341" />
+										<g>
+											<path class="st2"
+												d="M342.8,88.8l2.2,3.6l-0.1,0.1l-5.9-2.3c-2-0.5-4.1-0.9-6.1-1.4c2-0.5,4.1-0.9,6.1-1.4l5.9-2.3l0.1,0.1L342.8,88.8z" />
+										</g>
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div
+							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
+							<ul>
+								<li>A</li>
+								<li>B</li>
+								<li>C</li>
+							</ul>
+						</div>
 					</div>
 					<aside class="notes">
 						Closed-Loop Control<br>
@@ -173,41 +411,137 @@
 
 
 
-				<section data-auto-animate id="h0v3">
+				<section id="h0v3">
 					<h3>Terminology</h3>
-					<div class="r-stretch">
-
+					<div class="r-stretch"
+						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 200px;">
+						<div
+							style="grid-row-start: 1; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
+							<ul>
+								<li>A</li>
+								<li>B</li>
+								<li>C</li>
+							</ul>
+						</div>
+						<div id="h0v3blockAnim" class="fragment fade-left" data-fragment-index="1"
+							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 600px; height: 400px;">
+						</div>
+						<div class="fragment fade-left" data-fragment-index="1"
+							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3;">
+							<div>
+								<label for="h0v3throttle">Throttle: </label>
+								<div style="display: inline-flex; flex-direction:column; vertical-align: middle;">
+									<output for="h0v3throttle" id="h0v3throttleOutput">4.9</output>
+									<input id="h0v3throttle" type="range" style="width: 500px;" value="4.9" min="-10"
+										max="10" step="0.01" list="h0v3throttleVals">
+									<datalist id="h0v3throttleVals"
+										style="display: inline-flex; justify-content: space-between;">
+										<option>-10</option>
+										<option>+10</option>
+									</datalist>
+								</div>
+							</div>
+						</div>
 					</div>
 					<aside class="notes">
 						Terminology<br>
-						System State, Set-point or Desired State, Error, Input, Output
+						Set-point or Desired State, Error, Control signal, Output
 					</aside>
 				</section>
 
 
 
-				<section data-auto-animate id="h0v4">
+				<section id="h0v4">
 					<h3>PID Control</h3>
 					<div class="r-stretch"
-						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 50px;">
-						<div style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 2;">
-							Block animation goes here!
+						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 0.8fr;">
+						<div id="h0v4blockAnim" class="fragment fade-left" data-fragment-index="1"
+							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 300px;">
 						</div>
-						<div id="sysClk"
-							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2;">
+						<div id="h0v4blockPosPlot" class="fragment fade-left" data-fragment-index="1"
+							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 300px;">
 						</div>
-						<div style="grid-row-start: 1; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3;">
-							Text goes here!
-						</div>
-						<div style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 1; grid-column-end: 3;">
-							Animation controls go here!
+						<div
+							style="grid-row-start: 1; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; text-align: left;">
+							<div>
+								<div style="display: inline-block; height: 100px;">\[\tau (e)
+									\fragment{0}{= k_{p}e}
+									\fragment{1}{+
+									k_{d}
+									\frac{d}{dt}e} \fragment{2}{+ k_{i} \int_{0}^{t}
+									e \cdot dt} \fragment{0}{=} \]</div>
+								<div id="h0v4throttleVal" class="fragment fade-right" data-fragment-index="1"
+									style="display:inline-block;">0</div>
+							</div>
+							where,<br>
+							<div
+								style="display:grid; gap: 5px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 1fr;">
+								<div
+									style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 3;">
+									<div style="display: inline-block; height: 100px;">\[\mspace{3em} e = x_{des} - x
+										\fragment{0}{=}
+										\]
+									</div>
+									<div id="h0v4xErr" class="fragment fade-right" data-fragment-index="1"
+										style="display:inline-block;">0</div>
+								</div>
+								<div class="fragment fade-right" data-fragment-index="1"
+									style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2;">
+									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_p = \]
+									</div>
+									<div style="display:inline-block;">
+										<input id="h0v4kpVal" type="number" value="0"
+											style="width: 100px; height: 30px; font-size: 24px;">
+									</div>
+								</div>
+								<div class="fragment fade-right" data-fragment-index="1"
+									style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3;">
+									<div style="display: inline-block; height: 100px;">\[ k_{p}e = \]
+									</div>
+									<div id="h0v4pControlVal" style="display:inline-block;">8</div>
+								</div>
+								<div class="fragment fade-right" data-fragment-index="2"
+									style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 1; grid-column-end: 2;">
+									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_d = \]
+									</div>
+									<div style="display:inline-block;">
+										<input id="h0v4kdVal" type="number" value="0"
+											style="width: 100px; height: 30px; font-size: 24px;">
+									</div>
+								</div>
+								<div class="fragment fade-right" data-fragment-index="2"
+									style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 2; grid-column-end: 3;">
+									<div style="display: inline-block; height: 100px;">\[ k_{d}
+										\frac{d}{dt}e
+										= \]</div>
+									<div id="h0v4dControlVal" style="display:inline-block;">8</div>
+								</div>
+								<div class="fragment fade-right" data-fragment-index="3"
+									style="grid-row-start: 4; grid-row-end: 5; grid-column-start: 1; grid-column-end: 2;">
+									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_i = \]
+									</div>
+									<div style="display:inline-block;">
+										<input id="h0v4kiVal" type="number" value="0"
+											style="width: 100px; height: 30px; font-size: 24px;">
+									</div>
+								</div>
+								<div class="fragment fade-right" data-fragment-index="3"
+									style="grid-row-start: 4; grid-row-end: 5; grid-column-start: 2; grid-column-end: 3;">
+									<div style="display: inline-block; height: 100px;">\[ k_{i}
+										\int_{0}^{t} e
+										\cdot dt =
+										\]
+									</div>
+									<div id="h0v4iControlVal" style="display:inline-block;">8</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>
 
 
 
-				<section data-auto-animate id="h0v5">
+				<section id="h0v5">
 					<h3>Cautions</h3>
 					<div class="r-stretch">
 
@@ -247,7 +581,7 @@
 			margin: 0.04,
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3],
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
 		});
 		Reveal.on('ready', animControl.handleSlidesReady.bind(animControl));
 		Reveal.on('slidechanged', animControl.handleSlideChange.bind(animControl));
