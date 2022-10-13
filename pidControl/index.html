@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>MAE3185 Presentation</title>
+	<title>MAE3185 Presentation: PID Control</title>
 
 	<meta name="description"
 		content="A presentation of all the topics discussed in the Introduction to Mechatronics class of the University of Texas at Arlington">
@@ -235,9 +235,11 @@
 						<div
 							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
 							<ul>
-								<li>A</li>
-								<li>B</li>
-								<li>C</li>
+								<li style="margin-bottom: 10px;">The plant output doesn't affect the control signal.
+								</li>
+								<li style="margin-bottom: 10px;">Very easy and cheap to implement.</li>
+								<li style="margin-bottom: 10px;">Reliability depends on the quality of calibration.</li>
+								<li style="margin-bottom: 10px;">Cannot handle external disturbances.</li>
 							</ul>
 						</div>
 					</div>
@@ -396,9 +398,13 @@
 						<div
 							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
 							<ul>
-								<li>A</li>
-								<li>B</li>
-								<li>C</li>
+								<li style="margin-bottom: 10px;">The output of the plant is fed back to calculate the
+									error.</li>
+								<li style="margin-bottom: 10px;">Difficult to implement since the control signal is a
+									function of the error.</li>
+								<li style="margin-bottom: 10px;">Reliability is generally high since minimal calibration
+									is required.</li>
+								<li style="margin-bottom: 10px;">Can tolerate external disturbances.</li>
 							</ul>
 						</div>
 					</div>
@@ -415,24 +421,16 @@
 					<h3>Terminology</h3>
 					<div class="r-stretch"
 						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 200px;">
-						<div
-							style="grid-row-start: 1; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
-							<ul>
-								<li>A</li>
-								<li>B</li>
-								<li>C</li>
-							</ul>
-						</div>
 						<div id="h0v3blockAnim" class="fragment fade-left" data-fragment-index="1"
 							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 600px; height: 400px;">
 						</div>
 						<div class="fragment fade-left" data-fragment-index="1"
 							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3;">
 							<div>
-								<label for="h0v3throttle">Throttle: </label>
+								<label for="h0v3throttle">Throttle \((\tau)\): </label>
 								<div style="display: inline-flex; flex-direction:column; vertical-align: middle;">
 									<output for="h0v3throttle" id="h0v3throttleOutput">4.9</output>
-									<input id="h0v3throttle" type="range" style="width: 500px;" value="4.9" min="-10"
+									<input id="h0v3throttle" type="range" style="width: 400px;" value="4.9" min="-10"
 										max="10" step="0.01" list="h0v3throttleVals">
 									<datalist id="h0v3throttleVals"
 										style="display: inline-flex; justify-content: space-between;">
@@ -441,6 +439,22 @@
 									</datalist>
 								</div>
 							</div>
+						</div>
+						<div
+							style="grid-row-start: 1; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
+							<ul>
+								<li style="margin-bottom: 10px;">Output \((x)\): A quantity or parameter of the plant
+									that changes because of the changing control signal. </li>
+								<li style="margin-bottom: 10px;">Set-point \((x_{des})\): An output value that the plant
+									should reach. Other names are 'Reference Input' or 'Desired State'.</li>
+								<li style="margin-bottom: 10px;">Error \((e)\): The difference between the set-point and
+									the plant output at any given time.</li>
+								<li style="margin-bottom: 10px;">Control Signal \((\tau)\): The quantity or the
+									parameter
+									of the
+									plant that can be adjusted by a controller for achieving zero error. The control
+									signal for the sliding block example would be the throttle.</li>
+							</ul>
 						</div>
 					</div>
 					<aside class="notes">
@@ -475,7 +489,7 @@
 							</div>
 							where,<br>
 							<div
-								style="display:grid; gap: 5px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr 1fr;">
+								style="display:grid; gap: 5px; grid-template-columns: 1fr 1.25fr; grid-template-rows: 1fr 1fr 1fr 1fr;">
 								<div
 									style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 3;">
 									<div style="display: inline-block; height: 100px;">\[\mspace{3em} e = x_{des} - x
@@ -543,8 +557,20 @@
 
 				<section id="h0v5">
 					<h3>Cautions</h3>
-					<div class="r-stretch">
-
+					<div>
+						<ul>
+							<li style="margin-bottom: 20px;">There are always limits to what a sensor can measure
+								accurately. The controller should not react to such less accurate measurements.</li>
+							<li style="margin-bottom: 20px;">Many sensors cannot provide measurements continuously. This
+								discreteness in sensor measurement can affect the performance of a PID controller.</li>
+							<li style="margin-bottom: 20px;">Allowing the integral control values to change without
+								bounds can cause an overflow/underflow in the variable that stores the integration
+								value.</li>
+							<li style="margin-bottom: 20px;">The control signal generally has a maximum and a minimum
+								value. Thus, it is important to restrict the value of the control signal.</li>
+							<li style="margin-bottom: 20px;">If a positive control signal value reduces the error then
+								the control gains must be positive, otherwise the control gains must be negative.</li>
+						</ul>
 					</div>
 					<aside class="notes">
 						Cautions<br>

@@ -59,7 +59,7 @@ function h0v4kpValHandleChange() {
     let kpVal = parseFloat(h0v4kpVal.elem.value);
     if (isNaN(kpVal))
         h0v4kpVal.elem.value = 0;
-    h0v4kpVal.data.kpVal = kpVal;
+    h0v4kpVal.data.kpVal = parseFloat(h0v4kpVal.elem.value);
 }
 
 let h0v4pControlVal = new anim('h0v4pControlVal',
@@ -103,7 +103,7 @@ function h0v4kdValHandleChange() {
     let kdVal = parseFloat(h0v4kdVal.elem.value);
     if (isNaN(kdVal))
         h0v4kdVal.elem.value = 0;
-    h0v4kdVal.data.kdVal = kdVal;
+    h0v4kdVal.data.kdVal = parseFloat(h0v4kdVal.elem.value);
 }
 
 let h0v4dControlVal = new anim('h0v4dControlVal',
@@ -147,7 +147,7 @@ function h0v4kiValHandleChange() {
     let kiVal = parseFloat(h0v4kiVal.elem.value);
     if (isNaN(kiVal))
         h0v4kiVal.elem.value = 0;
-    h0v4kiVal.data.kiVal = kiVal;
+    h0v4kiVal.data.kiVal = parseFloat(h0v4kiVal.elem.value);
 }
 
 let h0v4iControlVal = new anim('h0v4iControlVal',
