@@ -105,15 +105,17 @@ let bulbIlumPlot = new anim('bulbIlumPlot',
                 tickfont: { family: 'Garamond,serif', size: 20, color: '#fff' },
             },
             yaxis: {
-                title: 'Illumination',
+                title: 'Illumination (lumens)',
                 titlefont: {
                     family: 'Garamond,serif',
                     size: 20,
                     color: 'white',
                 },
                 gridcolor: '#505050',
-                range: [0, 1],
-                showticklabels: false,
+                range: [0, 700],
+                tickcolor: '#fff',
+                tickfont: { family: 'Garamond,serif', size: 20, color: '#fff' },
+                // showticklabels: false,
             },
             paper_bgcolor: '#ffffff00',
             plot_bgcolor: '#ffffff00',
@@ -145,16 +147,16 @@ let bulbIlumPlot = new anim('bulbIlumPlot',
 function initbulbIlumPlotData() {
     for (let i = 0; i < bulbIlumPlot.data.data[0].x.length; ++i) {
         bulbIlumPlot.data.data[0].x[i] = i / bulbIlumPlot.data.data[0].x.length * 12;
-        bulbIlumPlot.data.data[0].y[i] = (i / bulbIlumPlot.data.data[0].x.length) ** 3;
+        bulbIlumPlot.data.data[0].y[i] = (i / bulbIlumPlot.data.data[0].x.length) ** 3 * 700;
     }
     bulbIlumPlot.data.data[1].x[0] = bulbIlumPlot.data.initVoltageVal * 12;
-    bulbIlumPlot.data.data[1].y[0] = bulbIlumPlot.data.initVoltageVal ** 3;
+    bulbIlumPlot.data.data[1].y[0] = bulbIlumPlot.data.initVoltageVal ** 3 * 700;
 }
 
 // Update the plot
 function updatebulbIlumPlotPlot(i) {
     voltageRangeElem = document.getElementById("voltageVal");
     bulbIlumPlot.data.data[1].x[0] = voltageRangeElem.value * 12;
-    bulbIlumPlot.data.data[1].y[0] = voltageRangeElem.value ** 3;
+    bulbIlumPlot.data.data[1].y[0] = voltageRangeElem.value ** 3 * 700;
     Plotly.update(bulbIlumPlot.id, bulbIlumPlot.data.data, bulbIlumPlot.data.layout);
 }
