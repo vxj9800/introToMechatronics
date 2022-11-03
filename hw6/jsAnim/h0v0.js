@@ -369,7 +369,7 @@ h0v0blockPosPlot.init = function () {
 };
 h0v0blockPosPlot.update = function (tAnim, dtAnim) {
     let t = tAnim * this.dt;
-    let pos = h0v0blockAnim.data[1].x[0];
+    let pos = h0v0blockAnim.x;
     let posDes = h0v0blockAnim.xDes;
     if (t < 120) {
         // Plotly.update(this.id, this.data, this.layout);
