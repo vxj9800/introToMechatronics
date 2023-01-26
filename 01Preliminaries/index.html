@@ -39,6 +39,7 @@
 
 <script src="jsAnim/h0v1.js"></script>
 <script src="jsAnim/h0v2.js"></script>
+<script src="jsAnim/h0v5.js"></script>
 
 <body>
 	<div class="reveal">
@@ -53,41 +54,106 @@
 
 
 
+				<section id="h0v5">
+					<h2>Number Systems</h2>
+					<div id="h0v5numberSystems"
+						style="display: grid; row-gap: 20px; column-gap: 20px; grid-template-rows: 1fr 3fr 1fr; grid-template-columns: 2fr 8fr;">
+						<p style="justify-self: right; align-self: center;"><input type="text" minlength="1" maxlength="5" size="5" value="0" style="font-weight: bold; font-size: larger;"
+							oninput="this.value = this.value.replace(/[^0-9]/, '')"
+							onchange="h0v5numberSystems.handleValChange()"> \(=\)</p>
+						<p style="justify-self: left; align-self: center;"></p>
+						<p style="justify-self: right; align-self: center;"></p>
+						<p style="justify-self: left; align-self: center;"></p>
+						<p style="justify-self: right; align-self: center;"></p>
+						<p style="justify-self: left; align-self: center;"></p>
+					</div>
+				</section>
+
+
+
 				<section id="h0v1">
-					<h2>Microprocessor&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspVs&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMicrocontroller</h2>
-					<div class="r-stretch"
-						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr;">
-						<div id="upComponents"
+					<h2>Microprocessor&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspVs&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMicrocontroller
+					</h2>
+					<div class="r-stretch" style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr;">
+						<div
 							style="grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
-							<svg width="400" height="400" viewBox="-200 -200 400 400" style="position: absolute; transform: translate(-50%,-50%);">
-								<line x1="0" y1="-100" x2="0" y2="0" pathLength="1" style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1"/>
-								<line x1="150" y1="-50" x2="0" y2="0" pathLength="1" style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1"/>
-								<line x1="150" y1="50" x2="0" y2="0" pathLength="1" style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1"/>
-								<line x1="0" y1="100" x2="0" y2="0" pathLength="1" style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1"/>
-								<line x1="-150" y1="50" x2="0" y2="0" pathLength="1" style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1"/>
-								<line x1="-150" y1="-50" x2="0" y2="0" pathLength="1" style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1"/>
+							<svg id="h0v1upLines" class="fragment fade-in" data-fragment-index="3" width="400"
+								height="400" viewBox="-200 -200 400 400"
+								style="position: absolute; transform: translate(-50%,-50%);">
+								<line x1="0" y1="-100" x2="0" y2="0" pathLength="1"
+									style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1" />
+								<line x1="150" y1="-50" x2="0" y2="0" pathLength="1"
+									style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1" />
+								<line x1="150" y1="50" x2="0" y2="0" pathLength="1"
+									style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1" />
+								<line x1="0" y1="100" x2="0" y2="0" pathLength="1"
+									style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1" />
+								<line x1="-150" y1="50" x2="0" y2="0" pathLength="1"
+									style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1" />
+								<line x1="-150" y1="-50" x2="0" y2="0" pathLength="1"
+									style="stroke: #F58025; stroke-width: 5px; stroke-dasharray: 1" />
 							</svg>
-							<div id="upCPU" style="position: absolute; transform: translate(0px,0px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">CPU</div>
-							<div id="upRAM" style="position: absolute; transform: translate(0px,-100px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">RAM</div>
-							<div id="upSSD" style="position: absolute; transform: translate(150px,-50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">SSD</div>
-							<div id="upGPU" style="position: absolute; transform: translate(150px,50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">GPU</div>
-							<div id="upUSB" style="position: absolute; transform: translate(0px,100px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">USB</div>
-							<div id="upPCIe" style="position: absolute; transform: translate(-150px,50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">PCIe</div>
-							<div id="upDVD" style="position: absolute; transform: translate(-150px,-50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">DVD</div>
+							<div id="h0v1upCPU" class="fragment" data-fragment-index="1"
+								style="position: absolute; transform: translate(0px,0px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+								CPU</div>
+							<div id="h0v1upComponents" class="fragment" data-fragment-index="2" width="400" height="400"
+								style="position: absolute; transform: translate(-50%,-50%);">
+								<div
+									style="position: absolute; transform: translate(0px,-100px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									RAM</div>
+								<div
+									style="position: absolute; transform: translate(150px,-50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									SSD</div>
+								<div
+									style="position: absolute; transform: translate(150px,50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									GPU</div>
+								<div
+									style="position: absolute; transform: translate(0px,100px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									USB</div>
+								<div
+									style="position: absolute; transform: translate(-150px,50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									PCIe</div>
+								<div
+									style="position: absolute; transform: translate(-150px,-50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									DVD</div>
+							</div>
 						</div>
-						<div id="ucComponents"
-							style="grid-column-start: 2; grid-column-end: 3; justify-self: center; align-self: center;">
-							<div id="ucCPU" style="position: absolute; transform: translate(0px,0px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">CPU</div>
-							<div id="ucRAM" style="position: absolute; transform: translate(0px,-100px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">RAM</div>
-							<div id="ucSSD" style="position: absolute; transform: translate(150px,-50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">FLASH</div>
-							<div id="ucGPU" style="position: absolute; transform: translate(150px,50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">PWM</div>
-							<div id="ucUSB" style="position: absolute; transform: translate(0px,100px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">USB</div>
-							<div id="ucPCIe" style="position: absolute; transform: translate(-150px,50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">I2C</div>
-							<div id="ucDVD" style="position: absolute; transform: translate(-150px,-50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">SPI</div>
-							<img src="./figs/rp2040.png" alt="RP2040" style="position: absolute; width: 454px; height: 440px; transform: translate(-50%,-55%); opacity: 0;">
-							<svg width="454px" height="440px" viewBox="-227 -220 454 440" style="position: absolute; transform: translate(-50%,-50%);">
-								<rect x="-227" y="-220" width="454" height="440" pathLength="1" style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1; fill: none" />
-							</svg>
+						<div
+							style="position: relative; grid-column-start: 2; grid-column-end: 3; justify-self: center; align-self: center;">
+							<div id="h0v1ucComponents" class="fragment fade-in" data-fragment-index="4" width="454px"
+								height="440px" style="position: absolute; transform: translate(-50%,-50%);">
+								<div
+									style="position: absolute; transform: translate(0px,0px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									CPU</div>
+								<div
+									style="position: absolute; transform: translate(0px,-100px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									RAM</div>
+								<div
+									style="position: absolute; transform: translate(150px,-50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									FLASH</div>
+								<div
+									style="position: absolute; transform: translate(150px,50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									PWM</div>
+								<div
+									style="position: absolute; transform: translate(0px,100px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									USB</div>
+								<div
+									style="position: absolute; transform: translate(-150px,50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									I2C</div>
+								<div
+									style="position: absolute; transform: translate(-150px,-50px) translate(-50%,-50%); border-radius: 50%; text-align: center; background: #0064B1;">
+									SPI</div>
+							</div>
+							<div id="h0v1rp2040" class="fragment fade-in" data-fragment-index="5" width="454px"
+								height="440px" style="position: absolute; transform: translate(-50%,-50%);">
+								<img src="./figs/rp2040.png" alt="RP2040"
+									style="position: absolute; width: 454px; height: 440px; transform: translate(-50%,-55%); opacity: 1;">
+								<svg width="454px" height="440px" viewBox="-227 -220 454 440"
+									style="position: absolute; transform: translate(-50%,-50%);">
+									<rect x="-227" y="-220" width="454" height="440" pathLength="1"
+										style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1; fill: none" />
+								</svg>
+							</div>
 						</div>
 					</div>
 				</section>
@@ -97,30 +163,61 @@
 				<section id="h0v2">
 					<h2>Clock Controls Everything</h2>
 					<div class="r-stretch" style="display: grid; gap: 10px; grid-template-columns: 1fr 2fr 5fr;">
-						<div style="grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
-							<svg width="200px" height="400px" viewBox="-100 -200 200 400" style="position: absolute; transform: translate(-50%,-50%);">
-								<rect x="-75" y="-100" width="150" height="200" rx="25" ry="25" pathLength="1" style="stroke: white; stroke-width: 5px; stroke-linecap: square; fill: none" />
-								<line x1="-50" y1="-75" x2="50" y2="-75" pathLength="1" style="stroke: #F58025; stroke-width: 5px; stroke-linecap: round;"/>
-								<line x1="-50" y1="75" x2="50" y2="75" pathLength="1" style="stroke: #F58025; stroke-width: 5px; stroke-linecap: round;"/>
-								<line x1="0" y1="-75" x2="0" y2="-150" pathLength="1" style="stroke: #F58025; stroke-width: 5px; stroke-linecap: round;"/>
-								<line x1="0" y1="75" x2="0" y2="150" pathLength="1" style="stroke: #F58025; stroke-width: 5px; stroke-linecap: round;"/>
-								<polygon id="crystal" points="-40,0 -20,-20 20,-20 40,0 20,20 -20,20 " fill="#ffffffaa" stroke="white" stroke-width="3px"/>
+						<div
+							style="grid-column-start: 1; grid-column-end: 2; justify-self: center; align-self: center;">
+							<svg width="200px" height="400px" viewBox="-100 -200 200 400"
+								style="position: absolute; transform: translate(-50%,-50%);">
+								<rect x="-75" y="-100" width="150" height="200" rx="25" ry="25" pathLength="1"
+									style="stroke: white; stroke-width: 5px; stroke-linecap: square; fill: none" />
+								<line x1="-50" y1="-75" x2="50" y2="-75" pathLength="1"
+									style="stroke: #F58025; stroke-width: 5px; stroke-linecap: round;" />
+								<line x1="-50" y1="75" x2="50" y2="75" pathLength="1"
+									style="stroke: #F58025; stroke-width: 5px; stroke-linecap: round;" />
+								<line x1="0" y1="-75" x2="0" y2="-150" pathLength="1"
+									style="stroke: #F58025; stroke-width: 5px; stroke-linecap: round;" />
+								<line x1="0" y1="75" x2="0" y2="150" pathLength="1"
+									style="stroke: #F58025; stroke-width: 5px; stroke-linecap: round;" />
+								<polygon id="h0v2crystal" points="-40,0 -20,-20 20,-20 40,0 20,20 -20,20 "
+									fill="#ffffffaa" stroke="white" stroke-width="3px" />
 							</svg>
 						</div>
-						<div id="clk" class="fragment fade-in" data-fragment-index="1" style="grid-column-start: 2; grid-column-end: 3; justify-self: center; align-self: center;"></div>
-						<div style="grid-column-start: 3; grid-column-end: 4; justify-self: center; align-self: center;">
-							<img class="fragment fade-in" data-fragment-index="2" src="./figs/rp2040.png" alt="RP2040" width="254px" height="246px" style="position: absolute; transform: translate(-270px,0px) translate(-50%,-58%);">
-							<svg width="900px" height="400px" viewBox="-450 -200 900 400" style="position: absolute; transform: translate(-50%,-50%);">
-								<rect class="fragment fade-in" data-fragment-index="2" x="-397" y="-123" width="254" height="246" pathLength="1" style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1; fill: none" />
-								<line class="fragment fade-in" data-fragment-index="3" x1="-397" y1="-123" x2="-121" y2="-150" style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1;"/>
-								<line class="fragment fade-in" data-fragment-index="3" x1="-143" y1="-123" x2="402" y2="-150" style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1;"/>
-								<line class="fragment fade-in" data-fragment-index="3" x1="-143" y1="123" x2="402" y2="150" style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1;"/>
-								<line class="fragment fade-in" data-fragment-index="3" x1="-397" y1="123" x2="-121" y2="150" style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1;"/>
+						<div id="h0v2clk" class="fragment fade-in" data-fragment-index="1"
+							style="grid-column-start: 2; grid-column-end: 3; justify-self: center; align-self: center;">
+						</div>
+						<div
+							style="grid-column-start: 3; grid-column-end: 4; justify-self: center; align-self: center;">
+							<img class="fragment fade-in" data-fragment-index="2" src="./figs/rp2040.png" alt="RP2040"
+								width="254px" height="246px"
+								style="position: absolute; transform: translate(-270px,0px) translate(-50%,-58%);">
+							<svg width="900px" height="400px" viewBox="-450 -200 900 400"
+								style="position: absolute; transform: translate(-50%,-50%);">
+								<rect class="fragment fade-in" data-fragment-index="2" x="-397" y="-123" width="254"
+									height="246" pathLength="1"
+									style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1; fill: none" />
+								<line class="fragment fade-in" data-fragment-index="3" x1="-397" y1="-123" x2="-121"
+									y2="-150"
+									style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1;" />
+								<line class="fragment fade-in" data-fragment-index="3" x1="-143" y1="-123" x2="402"
+									y2="-150"
+									style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1;" />
+								<line class="fragment fade-in" data-fragment-index="3" x1="-143" y1="123" x2="402"
+									y2="150"
+									style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1;" />
+								<line class="fragment fade-in" data-fragment-index="3" x1="-397" y1="123" x2="-121"
+									y2="150"
+									style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1;" />
 							</svg>
-							<img class="fragment fade-in" data-fragment-index="3" src="./figs/asmCode.png" alt="asmCode" width="523px" height="300px" style="position: absolute; transform: translate(140px,0px) translate(-50%,-56%);">
-							<svg class="fragment fade-in" data-fragment-index="3" width="900px" height="400px" viewBox="-450 -200 900 400" style="position: absolute; transform: translate(-50%,-50%);">
-								<rect x="-121" y="-150" width="523" height="300" pathLength="1" style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1; fill: none" />
-								<rect id="codeLine" x="50" y="-148" rx="3px" ry="3px" width="350" height="27" pathLength="1" style="stroke: white; stroke-width: 2px; stroke-linecap: square; stroke-dasharray: 1; fill: none" />
+							<img class="fragment fade-in" data-fragment-index="3" src="./figs/asmCode.png" alt="asmCode"
+								width="523px" height="300px"
+								style="position: absolute; transform: translate(140px,0px) translate(-50%,-56%);">
+							<svg class="fragment fade-in" data-fragment-index="3" width="900px" height="400px"
+								viewBox="-450 -200 900 400"
+								style="position: absolute; transform: translate(-50%,-50%);">
+								<rect x="-121" y="-150" width="523" height="300" pathLength="1"
+									style="stroke: white; stroke-width: 5px; stroke-linecap: square; stroke-dasharray: 1; fill: none" />
+								<rect id="h0v2codeLine" x="50" y="-148" rx="3px" ry="3px" width="350" height="27"
+									pathLength="1"
+									style="stroke: white; stroke-width: 2px; stroke-linecap: square; stroke-dasharray: 1; fill: none" />
 							</svg>
 						</div>
 					</div>
@@ -130,12 +227,12 @@
 
 				<section id="h0v3">
 					<h2>Information Storage in MCU</h2>
-					<div class="r-stretch" style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr 1fr;">
+					<div style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr 1fr;">
 						<div class="fragment fade-in" style="justify-self: center; align-self: center;">
 							<h3>FLASH</h3>
 							<ul>
 								<li style="margin-top: 30px;">Non-volatile</li>
-								<li style="margin-top: 30px;">Holds the  complete code and data</li>
+								<li style="margin-top: 30px;">Holds the complete code and data</li>
 								<li style="margin-top: 30px;">Large storage capacity (MBs to GBs), low speed</li>
 							</ul>
 						</div>
@@ -144,7 +241,8 @@
 							<ul>
 								<li style="margin-top: 30px;">Volatile</li>
 								<li style="margin-top: 30px;">Holds the code and data that is in the process</li>
-								<li style="margin-top: 30px;">Moderate storage capacity (KBs to MBs), higher speed than FLASH</li>
+								<li style="margin-top: 30px;">Moderate storage capacity (KBs to MBs), higher speed than
+									FLASH</li>
 							</ul>
 						</div>
 						<div class="fragment fade-in" style="justify-self: center; align-self: center;">
@@ -162,12 +260,18 @@
 
 				<section id="h0v4">
 					<h2>Some Fun Videos</h2>
-					<div class="r-stretch" style="display: grid; gap: 30px; grid-template-columns: 1fr 1fr;">
+					<div style="display: grid; gap: 30px; grid-template-columns: 1fr 1fr;">
 						<div style="justify-self: center; align-self: center;">
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/QZwneRb-zqA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+							<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/QZwneRb-zqA"
+								title="YouTube video player" frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen></iframe>
 						</div>
 						<div style="justify-self: center; align-self: center;">
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/I0-izyq6q5s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+							<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/I0-izyq6q5s"
+								title="YouTube video player" frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen></iframe>
 						</div>
 					</div>
 				</section>
@@ -200,10 +304,12 @@
 			margin: 0.04,
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath],
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX],
 		});
 		Reveal.on('ready', animControl.handleSlidesReady.bind(animControl));
 		Reveal.on('slidechanged', animControl.handleSlideChange.bind(animControl));
+		Reveal.on('fragmentshown', animControl.handleFragShown.bind(animControl));
+		Reveal.on('fragmenthidden', animControl.handleFragHidden.bind(animControl));
 		Reveal.addKeyBinding({ keyCode: 32, key: 'space', descriptio: 'Play or Pause the animations' }, animControl.playPauseAnim.bind(animControl));
 		Reveal.registerKeyboardShortcut('SPACE', 'Play or Pause the animations');
 		Reveal.addKeyBinding({ keyCode: 82, key: 'R', descriptio: 'Reset the animations' }, animControl.callResetFuns.bind(animControl));

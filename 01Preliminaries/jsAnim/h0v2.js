@@ -1,38 +1,38 @@
-let h0v2crystal = new anim('crystal');
+let h0v2crystal = new anim('h0v2crystal');
 h0v2crystal.dt = 0.016; // Because the default callback time for update function is 16ms.
 h0v2crystal.frq = 1;
-h0v2crystal.init = function() {
-    this.elem.setAttribute('transform','translate(0 0)');
+h0v2crystal.init = function () {
+    this.elem.setAttribute('transform', 'translate(0 0)');
 }
-h0v2crystal.update = function(tAnim,dtAnim) {
-    t = tAnim*dtAnim*this.dt;
-    this.elem.setAttribute('transform','translate(0 ' + 40*Math.sin(-2*Math.PI*this.frq*t) + ')');
+h0v2crystal.update = function (tAnim, dtAnim) {
+    t = tAnim * this.dt;
+    this.elem.setAttribute('transform', 'translate(0 ' + 40 * Math.sin(-2 * Math.PI * this.frq * t) + ')');
 }
-h0v2crystal.reset = function() {
+h0v2crystal.reset = function () {
     this.init();
 }
 
 
-let h0v2codeLine = new anim('codeLine');
+let h0v2codeLine = new anim('h0v2codeLine');
 h0v2codeLine.dt = 0.016; // Because the default callback time for update function is 16ms.
 h0v2codeLine.yOffset = 0;
 h0v2codeLine.animeCalled = false;
-h0v2codeLine.init = function() {
+h0v2codeLine.init = function () {
     this.animeCalled = false;
     this.yOffset = 0;
-    this.elem.setAttribute('transform','translate(0 0)');
+    this.elem.setAttribute('transform', 'translate(0 0)');
 }
-h0v2codeLine.update = function(tAnim,dtAnim) {
-    t = tAnim*dtAnim*this.dt;
+h0v2codeLine.update = function (tAnim, dtAnim) {
+    t = tAnim * this.dt;
     if (t > (Math.floor(t) + 0.8) && !this.animeCalled) {
         this.animeCalled = true;
         anime({
             targets: h0v2codeLine,
-            yOffset: (Math.floor(t) % 11)*27.27,
+            yOffset: (Math.floor(t) % 11) * 27.27,
             easing: 'easeInOutCubic',
             duration: 400,
-            update: function() {
-                h0v2codeLine.elem.setAttribute('transform','translate(0 ' + h0v2codeLine.yOffset + ')');
+            update: function () {
+                h0v2codeLine.elem.setAttribute('transform', 'translate(0 ' + h0v2codeLine.yOffset + ')');
             }
         })
     }
@@ -41,13 +41,13 @@ h0v2codeLine.update = function(tAnim,dtAnim) {
     }
     // this.elem.setAttribute('transform','translate(0 ' + 40*Math.sin(-2*Math.PI*this.frq*t) + ')');
 }
-h0v2codeLine.reset = function() {
+h0v2codeLine.reset = function () {
     this.init();
 }
 
 
 
-let h0v2clk = new anim('clk');
+let h0v2clk = new anim('h0v2clk');
 h0v2clk.clkFrq = 1;
 h0v2clk.dt = 0.016;
 h0v2clk.data = [{
