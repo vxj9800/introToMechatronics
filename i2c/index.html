@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>MAE3185 Presentation: UART Communication Protocol</title>
+
+	<meta name="description"
+		content="A presentation of all the topics discussed in the Introduction to Mechatronics class of the University of Texas at Arlington">
+	<meta name="author" content="Vatsal Joshi">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/mechatronics.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<!-- Load plugin to write math equations -->
+<script src="plugin/math/math.js"></script>
+
+<!-- Load Wavedrom library to draw signal diagrams -->
+
+<script src="./wavedrom/default.js"></script>	<!-- Load homemade Wavedrom theme to work with the dark background -->
+<script src="./wavedrom/wavedrom.js"></script>	<!-- Load homemade Wavedrom theme to work with the dark background -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.1.0/wavedrom.min.js" type="text/javascript"></script> -->
+
+<!-- Load MathJax to render latex in plotlyjs -->
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<!-- Load plotlyjs -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- Load anime.js to help with in-slide animations -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+
+<!-- Load homemade animation main script and other animation scripts -->
+<script src="./jsAnim/jsAnim.js"></script>
+<script src="./jsAnim/h0v3.js"></script>
+
+<body onload="WaveDrom.ProcessAll()">
+	<div class="reveal">
+		<div class="slides">
+			<section>
+
+
+
+				<section data-auto-animate id="h0v0">
+					<h2>I<sup>2</sup>C Communication Protocol</h2>
+				</section>
+
+
+
+				<section data-auto-animate id="h0v1">
+					<h2>I<sup>2</sup>C Communication Protocol</h2>
+					<ul>
+						<li class="fragment" style="margin-bottom: 24px;">I<sup>2</sup>C stands for Inter-Integrated
+							Circuit.</li>
+						<li class="fragment" style="margin-bottom: 24px;">It is a two wire communication system, one for
+							data signal and one for clock signal.</li>
+						<li class="fragment" style="margin-bottom: 24px;">Multiple devices can be connected on a set of
+							wires.</li>
+						<li class="fragment" style="margin-bottom: 24px;">Communication is controlled by one device
+							only.</li>
+						<li class="fragment" style="margin-bottom: 24px;">This is a synchronous communication protocol
+							since all devices operate on the same clock signal.</li>
+						<li class="fragment" style="margin-bottom: 24px;">
+							Following are the baud rates available for I<sup>2</sup>C protocol.
+							<table style="margin-top: 20px;">
+								<thead>
+									<tr>
+										<th style="border-right: 1px solid white;">Mode</th>
+										<th style="text-align: center">Standard</th>
+										<th style="text-align: center">Fast</th>
+										<th style="text-align: center">Fast+</th>
+										<th style="text-align: center">High-Speed</th>
+										<th style="text-align: center">Ultra-Fast</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td style="border-right: 1px solid white;">Speed</td>
+										<td style="text-align: center">100 kb/s</td>
+										<td style="text-align: center">400 kb/s</td>
+										<td style="text-align: center">1 Mb/s</td>
+										<td style="text-align: center">3.4 Mb/s</td>
+										<td style="text-align: center">5 Mb/s</td>
+									</tr>
+								</tbody>
+							</table>
+						</li>
+					</ul>
+				</section>
+
+
+
+				<section data-auto-animate data-auto-animate-restart id="h0v2">
+					<h2>Connection Between Devices</h2>
+					<svg width="1100" height="500" version="1.1" viewBox="0 0 291.04 132.29" xmlns="http://www.w3.org/2000/svg">
+						<g id="h0v2Target2" class="fragment" data-fragment-index="3">
+							<path d="m190.27 71.224v-31.701" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<path d="m201.44 71.306v-20.692" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<circle cx="190.27" cy="39.522" r="1.9844" style="fill:#fff"/>
+							<circle transform="scale(1,-1)" cx="201.44" cy="-50.614" r="1.9844" style="fill:#fff"/>
+							<rect x="169.42" y="71.303" width="52.86" height="32.338" rx="11.398" ry="11.398" style="fill-opacity:.2;fill:#f58025;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#f58025"/>
+							<text x="164.54109" y="89.400574"><tspan x="180.06062" y="89.400574" style="fill:#f58025;font-family:Cambria;font-size:8.4667px;font-weight:bold;stroke-width:1.3229">Target 2</tspan></text>
+						</g>
+						<g id="h0v2Target1" class="fragment" data-fragment-index="2">
+							<path d="m127.03 71.22v-31.701" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<path d="m138.2 71.304v-20.692" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<circle cx="127.03" cy="39.52" r="1.9844" style="fill:#fff"/>
+							<circle transform="scale(1,-1)" cx="138.2" cy="-50.61" r="1.9844" style="fill:#fff"/>
+							<rect x="106.19" y="71.303" width="52.86" height="32.338" rx="11.398" ry="11.398" style="fill-opacity:.2;fill:#f58025;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#f58025"/>
+							<text x="101.16354" y="89.400574"><tspan x="116.75334" y="89.400574" style="fill:#f58025;font-family:Cambria;font-size:8.4667px;font-weight:bold;stroke-width:1.3229">Target 1</tspan></text>
+						</g>
+						<g id="h0v2Lines" class="fragment" data-fragment-index="1">
+							<path d="m81.855 39.438h145.32" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<path d="m227.28 39.438 0.92343-3.4463 1.8622 6.95 1.8672-6.9686 1.8324 6.9548 1.8259-6.9307 1.7984 6.8862 0.93212-3.6531" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<path d="m238.32 39.23h11.494" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<path d="m249.82 34.966v8.5294" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<path d="m81.826 50.613h145.35" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<path d="m227.28 50.612 0.92343-3.4463 1.8622 6.95 1.8672-6.9686 1.8324 6.9548 1.8259-6.9307 1.7984 6.8862 0.93212-3.6531" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<path d="m238.32 50.404h11.494" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<path d="m249.82 46.14v8.5294" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+							<text x="245.97885" y="41.92487" style="fill:#ffffff"><tspan x="251.44817" y="41.92487" style="fill:#ffffff;font-family:Cambria;font-size:8.4667px;stroke-width:1.3229">V<tspan style="baseline-shift:sub;fill:#ffffff;font-size:65%">dd</tspan></tspan></text>
+							<text x="245.97885" y="52.691513" style="fill:#ffffff"><tspan x="251.44817" y="52.691513" style="fill:#ffffff;font-family:Cambria;font-size:8.4667px;stroke-width:1.3229">V<tspan style="baseline-shift:sub;fill:#ffffff;font-size:65%">dd</tspan></tspan></text>
+							<text x="76.726814" y="37.71833" style="fill:#fafafa;font-family:Cambria;font-size:8.4666px"><tspan x="83.12645" y="37.71833" style="fill:#fafafa;font-family:Cambria;font-size:8.4666px;stroke-width:1.3229">SCL</tspan></text>
+							<text x="75.982674" y="48.893528" style="fill:#ffffff;font-size:8.4666px" xml:space="default"><tspan x="83.12645" y="48.893528" style="fill:#ffffff;font-family:Cambria;font-size:8.4666px;stroke-width:1.3229">SDA</tspan></text>
+						</g>
+						<g id="h0v2Controller">
+							<rect x="29.011" y="28.648" width="52.86" height="32.338" rx="11.398" ry="11.398" style="fill-opacity:.2;fill:#0064b1;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#0064b1"/>
+							<text x="15.517703" y="47.743965"><tspan x="35.266445" y="47.743965" style="fill:#0064b1;font-family:Cambria;font-size:8.4667px;font-weight:bold;stroke-width:1.3229">Controller</tspan></text>
+						</g>
+					</svg>					
+				</section>
+
+
+
+				<section data-auto-animate id="h0v3">
+					<h2>Connection Between Devices</h2>
+					<svg width="1108.886" height="500" version="1.2" viewBox="0 0 831.66446 374.99999" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						<defs>
+							<linearGradient id="linearGradient9303" x1="451.39319" x2="451.39319" y1="367.22137" y2="21.956755" gradientUnits="userSpaceOnUse">
+								<stop style="stop-color:#0064b1" offset="0"/>
+								<stop style="stop-color:#f58025" offset="1"/>
+							</linearGradient>
+						</defs>
+						<image id="h0v3PicoL" x="1.3791504e-7" y="1.5087891e-6" width="303.27856" height="375" preserveAspectRatio="none" xlink:href="./figs/picoRightI2c.svg"/>
+						<image id="h0v3PicoR" x="527.88959" y="1.5087891e-6" width="303.77487" height="375" style="fill:#5e3aa3" preserveAspectRatio="none" xlink:href="./figs/picoLeftI2C.svg"/>
+						<path id="h0v3SclL" class="fragment do-nothing" d="m253.31829 338.87181h46.84404c3.12498 0 5.64075 2.51578 5.64075 5.64075v5.72211c0 3.12497-2.51577 5.64075-5.64075 5.64075h-46.84404c-3.12497 0-5.64075-2.51578-5.64075-5.64075v-5.72211c0-3.12497 2.51578-5.64075 5.64075-5.64075z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25;stroke:#fff" data-fragment-index="2"/>
+						<path id="h0v3SdaL" class="fragment do-nothing" d="m253.25886 356.8358h46.96295c3.08905 0 5.57591 2.48686 5.57591 5.57592v5.86866c0 3.08906-2.48686 5.57592-5.57591 5.57592h-46.96295c-3.08906 0-5.57592-2.48686-5.57592-5.57592v-5.86866c0-3.08906 2.48686-5.57592 5.57592-5.57592z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25;stroke:#0064b1" data-fragment-index="2"/>
+						<path id="h0v3SclR" class="fragment do-nothing" d="m578.43664 50.306h-47.10338c-3.05314 0-5.51108-2.45794-5.51108-5.51108v-5.98144c0-3.05314 2.45794-5.51108 5.51108-5.51108h47.10338c3.05313 0 5.51107 2.45794 5.51107 5.51108v5.98144c0 3.05314-2.45794 5.51108-5.51107 5.51108z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25;stroke:#fff" data-fragment-index="2"/>
+						<path id="h0v3SdaR" class="fragment do-nothing" d="m578.43126 32.34201h-47.09234c-3.05313 0-5.51107-2.45794-5.51107-5.51108v-5.99834c0-3.05313 2.45794-5.51107 5.51107-5.51107h47.09234c3.05314 0 5.51108 2.45794 5.51108 5.51107v5.99834c0 3.05314-2.45794 5.51108-5.51108 5.51108z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25;stroke:#f58025" data-fragment-index="2"/>
+						<path id="h0v3SDA" class="fragment do-nothing" d="m305.79772 365.34605c32.07465 5.2e-4 81.74677 3.2e-4 109.22869 1.5e-4 11.0457-7e-5 20-8.95446 20-20.00015v-301.514291a20 20 135 0 1 20-20h70.80144" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.24999993;stroke:url(#linearGradient9303)" data-fragment-index="3"/>
+						<path id="h0v3SCL" class="fragment do-nothing" d="m305.80308 347.37361h88.84123a20 20 135 0 0 20-20v-265.569411a20 20 135 0 1 20-20h91.17787" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.24999993;stroke:#fff" data-fragment-index="3"/>
+					</svg>
+				</section>
+
+
+
+				<section id="h0v4">
+					<h2>I<sup>2</sup>C Message</h2>
+					<div>
+						<ul>
+							<li class="fragment fade-right" style="margin-bottom: 30px;">
+								Message always starts with an address frame.
+								<div>
+									<script type="WaveDrom">
+										{signal: [
+												{name: 'SDA', wave: '10.5...........................5...4...1..', node: '.A.B.', data: ["7-bit Address","Read/Write","Ack/Nack"], period: 0.5},
+												{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.', period: 0.5}
+											],
+											edge: ['A-B Start']
+										}
+									</script>
+								</div>
+							</li>
+							<li class="fragment fade-right" style="margin-bottom: 30px;">
+								If <code>Read/Write</code> bit was <code>HIGH</code> then the data frame would be
+								<div>
+									<script type="WaveDrom">
+										{signal: [
+												{name: 'SDA', wave: '1.4...............................0...1...|..4...............................1...0..1.', node: '..................................A...B.......................................C...D...E.', data: ["8-bit Data","8-bit Data"], period: 0.25},
+												{name: 'SCL', wave: '1l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..|.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.25}
+											],
+											edge: ['A-B Ack','C-D Nack','D-E Stop']
+										}
+									</script>
+								</div>
+							</li>
+							<li class="fragment fade-right" style="margin-bottom: 30px;">
+								If <code>Read/Write</code> bit was <code>LOW</code> then the data frame would be
+								<div>
+									<script type="WaveDrom">
+										{signal: [
+											{name: 'SDA', wave: '1.5...............................0...1...|..5...............................0...0..1.', node: '..................................A...B.......................................C...D...E.', data: ["8-bit Data","8-bit Data"], period: 0.25},
+											{name: 'SCL', wave: '1l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..|.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.25}
+										],
+										edge: ['A-B Ack','C-D Ack','D-E Stop']
+									}
+									</script>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+
+
+
+				<section id="h0v5">
+					<h2>I<sup>2</sup>C Message Example</h2>
+					<div class="r-stretch" style="display: grid; grid-template-rows: 1fr 1fr 1fr 1fr 1fr;">
+						<div>
+							<script type="WaveDrom">
+								{signal:
+									[
+										{
+											node: 'A..B...C...D...E...F...G...H...I...J...K..L',
+											period: 0.5,
+										},
+										{
+											name: 'SDA',
+											 wave: '10.........1.......0...................1...',
+											 data: ["7-bit Address","Read/Write","Ack/Nack"],
+											period: 0.5
+										},
+										{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.5}
+									],
+									edge: ['A<->B S', 'B<->C 0', 'C<->D 0', 'D<->E 1', 'E<->F 1', 'F<->G 0', 'G<->H 0', 'H<->I 0', 'I<->J Write', 'J<->K Ack']
+								}
+							</script>
+						</div>
+						
+						<div class="fragment">
+							<script type="WaveDrom">
+								{signal:
+									[
+										{
+											node: 'A..B...C...D...E...F...G...H...I...J...K..L',
+											period: 0.5,
+										},
+										{
+											name: 'SDA',
+											 wave: '1..0...................1...0...1...0...1...',
+											 data: ["7-bit Address","Read/Write","Ack/Nack"],
+											period: 0.5
+										},
+										{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.5}
+									],
+									edge: ['B<->C 0', 'C<->D 0', 'D<->E 0', 'E<->F 0', 'F<->G 0', 'G<->H 1', 'H<->I 0', 'I<->J 1', 'J<->K Ack']
+								}
+							</script>
+						</div>
+						
+						<div class="fragment">
+							<script type="WaveDrom">
+								{signal:
+									[
+										{
+											node: 'A..B...C...D...E...F...G...H...I...J...K..L',
+											period: 0.5,
+										},
+										{
+											name: 'SDA',
+											 wave: '10.........1.......0...........1...0...1...',
+											 data: ["7-bit Address","Read/Write","Ack/Nack"],
+											period: 0.5
+										},
+										{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.5}
+									],
+									edge: ['A<->B S', 'B<->C 0', 'C<->D 0', 'D<->E 1', 'E<->F 1', 'F<->G 0', 'G<->H 0', 'H<->I 0', 'I<->J Read', 'J<->K Ack']
+								}
+							</script>
+						</div>
+						
+						<div class="fragment">
+							<script type="WaveDrom">
+								{signal:
+									[
+										{
+											node: 'A..B...C...D...E...F...G...H...I...J...K..L',
+											period: 0.5,
+										},
+										{
+											name: 'SDA',
+											 wave: '1..0...........................1...0...1...',
+											 data: ["7-bit Address","Read/Write","Ack/Nack"],
+											period: 0.5
+										},
+										{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.5}
+									],
+									edge: ['B<->C 0', 'C<->D 0', 'D<->E 0', 'E<->F 0', 'F<->G 0', 'G<->H 0', 'H<->I 0', 'I<->J 1', 'J<->K Ack']
+								}
+							</script>
+						</div>
+						
+						<div class="fragment">
+							<script type="WaveDrom">
+								{signal:
+									[
+										{
+											node: 'A..B...C...D...E...F...G...H...I...J...K..L',
+											period: 0.5,
+										},
+										{
+											name: 'SDA',
+											 wave: '1......0.......1...0...1...0.......1...0.1.',
+											 data: ["7-bit Address","Read/Write","Ack/Nack"],
+											period: 0.5
+										},
+										{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.5}
+									],
+									edge: ['B<->C 1', 'C<->D 0', 'D<->E 0', 'E<->F 1', 'F<->G 0', 'G<->H 1', 'H<->I 0', 'I<->J 0', 'J<->K Nack', 'K<->L St']
+								}
+							</script>
+						</div>
+						
+					</div>
+				</section>
+
+
+
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			slideNumber: true,
+
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1280,
+			height: 720,
+
+			// Factor of the display size that should remain empty around
+			// the content
+			margin: 0.04,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX],
+		});
+		Reveal.on('ready', animControl.handleSlidesReady.bind(animControl));
+		Reveal.on('slidechanged', animControl.handleSlideChange.bind(animControl));
+		Reveal.on('fragmentshown', animControl.handleFragShown.bind(animControl));
+		Reveal.on('fragmenthidden', animControl.handleFragHidden.bind(animControl));
+		Reveal.addKeyBinding({ keyCode: 32, key: 'space', descriptio: 'Play or Pause the animations' }, animControl.playPauseAnim.bind(animControl));
+		Reveal.registerKeyboardShortcut('SPACE', 'Play or Pause the animations');
+		Reveal.addKeyBinding({ keyCode: 82, key: 'R', descriptio: 'Reset the animations' }, animControl.callResetFuns.bind(animControl));
+		Reveal.addKeyBinding({ keyCode: 188, key: '<', descriptio: 'Slow down the animations' }, animControl.decreaseAnimUpdateDt.bind(animControl));
+		Reveal.addKeyBinding({ keyCode: 190, key: '>', descriptio: 'Speed up the animations' }, animControl.increaseAnimUpdateDt.bind(animControl));
+	</script>
+</body>
+
+</html>

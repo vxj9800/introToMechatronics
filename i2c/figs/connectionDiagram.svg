@@ -1,0 +1,36 @@
+<svg width="1100" height="500" version="1.1" viewBox="0 0 291.04 132.29" xmlns="http://www.w3.org/2000/svg">
+	<g id="slideTarget2" class="fragment" data-fragment-index="3">
+		<path d="m190.27 71.224v-31.701" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<path d="m201.44 71.306v-20.692" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<circle cx="190.27" cy="39.522" r="1.9844" style="fill:#fff"/>
+		<circle transform="scale(1,-1)" cx="201.44" cy="-50.614" r="1.9844" style="fill:#fff"/>
+		<rect x="169.42" y="71.303" width="52.86" height="32.338" rx="11.398" ry="11.398" style="fill-opacity:.2;fill:#f58025;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#f58025"/>
+		<text x="164.54109" y="89.400574"><tspan x="180.06062" y="89.400574" style="fill:#f58025;font-family:Cambria;font-size:8.4667px;font-weight:bold;stroke-width:1.3229">Target 2</tspan></text>
+	</g>
+	<g id="slideTarget1" class="fragment" data-fragment-index="2">
+		<path d="m127.03 71.22v-31.701" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<path d="m138.2 71.304v-20.692" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<circle cx="127.03" cy="39.52" r="1.9844" style="fill:#fff"/>
+		<circle transform="scale(1,-1)" cx="138.2" cy="-50.61" r="1.9844" style="fill:#fff"/>
+		<rect x="106.19" y="71.303" width="52.86" height="32.338" rx="11.398" ry="11.398" style="fill-opacity:.2;fill:#f58025;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#f58025"/>
+		<text x="101.16354" y="89.400574"><tspan x="116.75334" y="89.400574" style="fill:#f58025;font-family:Cambria;font-size:8.4667px;font-weight:bold;stroke-width:1.3229">Target 1</tspan></text>
+	</g>
+	<g id="slideLines" class="fragment" data-fragment-index="1">
+		<path d="m81.855 39.438h145.32" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<path d="m227.28 39.438 0.92343-3.4463 1.8622 6.95 1.8672-6.9686 1.8324 6.9548 1.8259-6.9307 1.7984 6.8862 0.93212-3.6531" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<path d="m238.32 39.23h11.494" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<path d="m249.82 34.966v8.5294" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<path d="m81.826 50.613h145.35" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<path d="m227.28 50.612 0.92343-3.4463 1.8622 6.95 1.8672-6.9686 1.8324 6.9548 1.8259-6.9307 1.7984 6.8862 0.93212-3.6531" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<path d="m238.32 50.404h11.494" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<path d="m249.82 46.14v8.5294" style="fill:none;paint-order:normal;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#fff"/>
+		<text x="245.97885" y="41.92487" style="fill:#ffffff"><tspan x="251.44817" y="41.92487" style="fill:#ffffff;font-family:Cambria;font-size:8.4667px;stroke-width:1.3229">V<tspan style="baseline-shift:sub;fill:#ffffff;font-size:65%">dd</tspan></tspan></text>
+		<text x="245.97885" y="52.691513" style="fill:#ffffff"><tspan x="251.44817" y="52.691513" style="fill:#ffffff;font-family:Cambria;font-size:8.4667px;stroke-width:1.3229">V<tspan style="baseline-shift:sub;fill:#ffffff;font-size:65%">dd</tspan></tspan></text>
+		<text x="76.726814" y="37.71833" style="fill:#fafafa;font-family:Cambria;font-size:8.4666px"><tspan x="83.12645" y="37.71833" style="fill:#fafafa;font-family:Cambria;font-size:8.4666px;stroke-width:1.3229">SCL</tspan></text>
+		<text x="75.982674" y="48.893528" style="fill:#ffffff;font-size:8.4666px" xml:space="default"><tspan x="83.12645" y="48.893528" style="fill:#ffffff;font-family:Cambria;font-size:8.4666px;stroke-width:1.3229">SDA</tspan></text>
+	</g>
+	<g id="slideController">
+		<rect x="29.011" y="28.648" width="52.86" height="32.338" rx="11.398" ry="11.398" style="fill-opacity:.2;fill:#0064b1;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.3229;stroke:#0064b1"/>
+		<text x="15.517703" y="47.743965"><tspan x="35.266445" y="47.743965" style="fill:#0064b1;font-family:Cambria;font-size:8.4667px;font-weight:bold;stroke-width:1.3229">Controller</tspan></text>
+	</g>
+</svg>

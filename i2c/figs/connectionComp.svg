@@ -1,0 +1,16 @@
+<svg width="1108.886" height="500" version="1.2" viewBox="0 0 831.66446 374.99999" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<linearGradient id="linearGradient9303" x1="451.39319" x2="451.39319" y1="367.22137" y2="21.956755" gradientUnits="userSpaceOnUse">
+			<stop style="stop-color:#0064b1" offset="0"/>
+			<stop style="stop-color:#f58025" offset="1"/>
+		</linearGradient>
+	</defs>
+	<image id="slidePicoL" x="1.3791504e-7" y="1.5087891e-6" width="303.27856" height="375" preserveAspectRatio="none" xlink:href="../../../OneDrive%20-%20University%20of%20Texas%20at%20Arlington/My%20Data/PhD/Sem%209/Introduction%20to%20Mechatronics/modules/introToMechatronics/i2c/figs/picoRightI2c.svg"/>
+	<image id="slidePicoR" x="527.88959" y="1.5087891e-6" width="303.77487" height="375" style="fill:#5e3aa3" preserveAspectRatio="none" xlink:href="../../../OneDrive%20-%20University%20of%20Texas%20at%20Arlington/My%20Data/PhD/Sem%209/Introduction%20to%20Mechatronics/modules/introToMechatronics/i2c/figs/picoLeftI2C.svg"/>
+	<path id="slideSclL" class="fragment do-nothing" d="m253.31829 338.87181h46.84404c3.12498 0 5.64075 2.51578 5.64075 5.64075v5.72211c0 3.12497-2.51577 5.64075-5.64075 5.64075h-46.84404c-3.12497 0-5.64075-2.51578-5.64075-5.64075v-5.72211c0-3.12497 2.51578-5.64075 5.64075-5.64075z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25;stroke:#fff" data-fragment-index="2"/>
+	<path id="slideSdaL" class="fragment do-nothing" d="m253.25886 356.8358h46.96295c3.08905 0 5.57591 2.48686 5.57591 5.57592v5.86866c0 3.08906-2.48686 5.57592-5.57591 5.57592h-46.96295c-3.08906 0-5.57592-2.48686-5.57592-5.57592v-5.86866c0-3.08906 2.48686-5.57592 5.57592-5.57592z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25;stroke:#0064b1" data-fragment-index="2"/>
+	<path id="slideSclR" class="fragment do-nothing" d="m578.43664 50.306h-47.10338c-3.05314 0-5.51108-2.45794-5.51108-5.51108v-5.98144c0-3.05314 2.45794-5.51108 5.51108-5.51108h47.10338c3.05313 0 5.51107 2.45794 5.51107 5.51108v5.98144c0 3.05314-2.45794 5.51108-5.51107 5.51108z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25;stroke:#fff" data-fragment-index="2"/>
+	<path id="slideSdaR" class="fragment do-nothing" d="m578.43126 32.34201h-47.09234c-3.05313 0-5.51107-2.45794-5.51107-5.51108v-5.99834c0-3.05313 2.45794-5.51107 5.51107-5.51107h47.09234c3.05314 0 5.51108 2.45794 5.51108 5.51107v5.99834c0 3.05314-2.45794 5.51108-5.51108 5.51108z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.25;stroke:#f58025" data-fragment-index="2"/>
+	<path id="slideSDA" class="fragment do-nothing" d="m305.79772 365.34605c32.07465 5.2e-4 81.74677 3.2e-4 109.22869 1.5e-4 11.0457-7e-5 20-8.95446 20-20.00015v-301.514291a20 20 135 0 1 20-20h70.80144" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.24999993;stroke:url(#linearGradient9303)" data-fragment-index="3"/>
+	<path id="slideSCL" class="fragment do-nothing" d="m305.80308 347.37361h88.84123a20 20 135 0 0 20-20v-265.569411a20 20 135 0 1 20-20h91.17787" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.24999993;stroke:#fff" data-fragment-index="3"/>
+</svg>
