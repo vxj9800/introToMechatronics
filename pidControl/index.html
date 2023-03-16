@@ -18,7 +18,7 @@
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/mechatronics.css">
+	<link rel="stylesheet" href="../revealExtras/theme/mechatronics.css">
 
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -27,13 +27,22 @@
 <!-- Load plugin to write math equations -->
 <script src="plugin/math/math.js"></script>
 
+<!-- Load MathJax to render latex in plotlyjs -->
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 <!-- Load plotlyjs -->
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-<!-- Load homemade animation main script and other animation scripts -->
-<script src="jsAnim/jsAnim.js"></script>
+<!-- Load anime.js to help with in-slide animations -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+
+<!-- Add a library to do math, the default javascript Math is not enough. -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.2/math.js"></script>
-<script src="jsAnim/bulbGlow.js"></script>
+
+<!-- Load homemade animation main script and other animation scripts -->
+<script src="../revealExtras/jsAnim/jsAnim.js"></script>
+<script src="jsAnim/h0v1.js"></script>
 <script src="jsAnim/h0v2.js"></script>
 <script src="jsAnim/h0v3.js"></script>
 <script src="jsAnim/h0v4.js"></script>
@@ -77,16 +86,16 @@
 								</style>
 								<g id="bulbGlow">
 
-									<radialGradient id="bulbLight" cx="404.7" cy="110.3" r="110.3"
+									<radialGradient id="h0v1BulbLight" cx="404.7" cy="110.3" r="110.3"
 										gradientUnits="userSpaceOnUse">
 										<stop offset="0" style="stop-color:#ffff00" />
 										<stop offset="1" style="stop-color:#ffff0000" />
 									</radialGradient>
 
-									<circle id="glow" style="fill:url(#bulbLight);" cx="404.7" cy="110.3" r="110.3" />
+									<circle id="glow" style="fill:url(#h0v1BulbLight);" cx="404.7" cy="110.3" r="110.3" />
 								</g>
 								<g id="voltage">
-									<text id="volts" transform="translate(-10 95)" class="bulbSt1">1.0V</text>
+									<text id="h0v1Volts" transform="translate(-10 95)" class="bulbSt1">1.0V</text>
 								</g>
 								<g id="bulbCircuit">
 									<g id="circuit" style="fill:#ffffff">
@@ -144,13 +153,13 @@
 								</g>
 							</svg>
 						</div>
-						<div id="bulbIlumPlot" class="fragment fade-left" data-fragment-index="1"
+						<div id="h0v1BulbIlumPlot" class="fragment fade-left" data-fragment-index="1"
 							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 250px;">
 						</div>
 						<div class="fragment fade-up" data-fragment-index="1"
 							style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 1; grid-column-end: 3;">
-							<label for="voltageVal">Voltage: </label>
-							<input id="voltageVal" type="range" style="width: 500px;" value="0.1" min="0" max="1"
+							<label for="h0v1VoltageVal">Voltage: </label>
+							<input id="h0v1VoltageVal" type="range" style="width: 500px;" value="0.1" min="0" max="1"
 								step="0.01">
 						</div>
 						<div
@@ -257,22 +266,22 @@
 					<h3>Closed-Loop Control</h3>
 					<div class="r-stretch"
 						style="display: grid; gap: 10px; grid-template-columns: 1fr 0.6fr; grid-template-rows: 1fr 1fr 100px;">
-						<div id="h0v2blockAnim" class="fragment fade-left" data-fragment-index="1"
+						<div id="h0v2BlockAnim" class="fragment fade-left" data-fragment-index="1"
 							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 250px;">
 						</div>
-						<div id="h0v2blockPosPlot" class="fragment fade-left" data-fragment-index="1"
+						<div id="h0v2BlockPosPlot" class="fragment fade-left" data-fragment-index="1"
 							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 250px;">
 						</div>
 						<div class="fragment fade-up" data-fragment-index="1"
 							style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 1; grid-column-end: 3; justify-self: center;">
 							<div>
-								<label for="h0v2throttle">Throttle: </label>
+								<label for="h0v2Throttle">Throttle: </label>
 								<div style="display: inline-flex; flex-direction:column; vertical-align: middle;">
-									<output for="h0v2throttle" id="h0v2throttleOutput">4.9</output>
-									<input id="h0v2throttle" type="range" style="width: 500px;" value="4.9" min="-10"
-										max="10" step="0.01" list="h0v2throttleVals"
-										oninput="document.getElementById('h0v2throttleOutput').value = Number(document.getElementById('h0v2throttle').value).toFixed(2)">
-									<datalist id="h0v2throttleVals"
+									<output for="h0v2Throttle" id="h0v2ThrottleOutput">4.9</output>
+									<input id="h0v2Throttle" type="range" style="width: 500px;" value="4.9" min="-10"
+										max="10" step="0.01" list="h0v2ThrottleVals"
+										oninput="document.getElementById('h0v2ThrottleOutput').value = Number(document.getElementById('h0v2Throttle').value).toFixed(2)">
+									<datalist id="h0v2ThrottleVals"
 										style="display: inline-flex; justify-content: space-between;">
 										<option>-10</option>
 										<option>+10</option>
@@ -421,18 +430,18 @@
 					<h3>Terminology</h3>
 					<div class="r-stretch"
 						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 200px;">
-						<div id="h0v3blockAnim" class="fragment fade-left" data-fragment-index="1"
+						<div id="h0v3BlockAnim" class="fragment fade-left" data-fragment-index="1"
 							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 600px; height: 400px;">
 						</div>
 						<div class="fragment fade-left" data-fragment-index="1"
 							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3;">
 							<div>
-								<label for="h0v3throttle">Throttle \((\tau)\): </label>
+								<label for="h0v3Throttle">Throttle \((\tau)\): </label>
 								<div style="display: inline-flex; flex-direction:column; vertical-align: middle;">
-									<output for="h0v3throttle" id="h0v3throttleOutput">4.9</output>
-									<input id="h0v3throttle" type="range" style="width: 400px;" value="4.9" min="-10"
-										max="10" step="0.01" list="h0v3throttleVals">
-									<datalist id="h0v3throttleVals"
+									<output for="h0v3Throttle" id="h0v3ThrottleOutput">4.9</output>
+									<input id="h0v3Throttle" type="range" style="width: 400px;" value="4.9" min="-10"
+										max="10" step="0.01" list="h0v3ThrottleVals">
+									<datalist id="h0v3ThrottleVals"
 										style="display: inline-flex; justify-content: space-between;">
 										<option>-10</option>
 										<option>+10</option>
@@ -469,10 +478,10 @@
 					<h3>PID Control</h3>
 					<div class="r-stretch"
 						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 0.8fr;">
-						<div id="h0v4blockAnim" class="fragment fade-left" data-fragment-index="1"
+						<div id="h0v4BlockAnim" class="fragment fade-left" data-fragment-index="1"
 							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 300px;">
 						</div>
-						<div id="h0v4blockPosPlot" class="fragment fade-left" data-fragment-index="1"
+						<div id="h0v4BlockPosPlot" class="fragment fade-left" data-fragment-index="1"
 							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 300px;">
 						</div>
 						<div
@@ -484,7 +493,7 @@
 									k_{d}
 									\frac{d}{dt}e} \fragment{2}{+ k_{i} \int_{0}^{t}
 									e \cdot dt} \fragment{0}{=} \]</div>
-								<div id="h0v4throttleVal" class="fragment fade-right" data-fragment-index="1"
+								<div id="h0v4ThrottleVal" class="fragment fade-right" data-fragment-index="1"
 									style="display:inline-block;">0</div>
 							</div>
 							where,<br>
@@ -496,7 +505,7 @@
 										\fragment{0}{=}
 										\]
 									</div>
-									<div id="h0v4xErr" class="fragment fade-right" data-fragment-index="1"
+									<div id="h0v4XErr" class="fragment fade-right" data-fragment-index="1"
 										style="display:inline-block;">0</div>
 								</div>
 								<div class="fragment fade-right" data-fragment-index="1"
@@ -504,23 +513,21 @@
 									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_p = \]
 									</div>
 									<div style="display:inline-block;">
-										<input id="h0v4kpVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
+										<input id="h0v4KpVal" type="number" value="0">
 									</div>
 								</div>
 								<div class="fragment fade-right" data-fragment-index="1"
 									style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3;">
 									<div style="display: inline-block; height: 100px;">\[ k_{p}e = \]
 									</div>
-									<div id="h0v4pControlVal" style="display:inline-block;">8</div>
+									<div id="h0v4PControlVal" style="display:inline-block;">8</div>
 								</div>
 								<div class="fragment fade-right" data-fragment-index="2"
 									style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 1; grid-column-end: 2;">
 									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_d = \]
 									</div>
 									<div style="display:inline-block;">
-										<input id="h0v4kdVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
+										<input id="h0v4KdVal" type="number" value="0">
 									</div>
 								</div>
 								<div class="fragment fade-right" data-fragment-index="2"
@@ -528,15 +535,14 @@
 									<div style="display: inline-block; height: 100px;">\[ k_{d}
 										\frac{d}{dt}e
 										= \]</div>
-									<div id="h0v4dControlVal" style="display:inline-block;">8</div>
+									<div id="h0v4DControlVal" style="display:inline-block;">8</div>
 								</div>
 								<div class="fragment fade-right" data-fragment-index="3"
 									style="grid-row-start: 4; grid-row-end: 5; grid-column-start: 1; grid-column-end: 2;">
 									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_i = \]
 									</div>
 									<div style="display:inline-block;">
-										<input id="h0v4kiVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
+										<input id="h0v4KiVal" type="number" value="0">
 									</div>
 								</div>
 								<div class="fragment fade-right" data-fragment-index="3"
@@ -546,7 +552,7 @@
 										\cdot dt =
 										\]
 									</div>
-									<div id="h0v4iControlVal" style="display:inline-block;">8</div>
+									<div id="h0v4IControlVal" style="display:inline-block;">8</div>
 								</div>
 							</div>
 						</div>

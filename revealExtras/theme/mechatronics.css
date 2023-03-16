@@ -20,12 +20,12 @@ section.has-light-background h6 {
  *********************************************/
 :root {
   --r-background-color: #191919;
-  --r-main-font: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  --r-main-font: Garamond, Georgia, 'Times New Roman', serif;
   --r-main-font-size: 30px;
   --r-main-color: #fff;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 36px 0;
-  --r-heading-font: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  --r-heading-font: Garamond, Georgia, 'Times New Roman', serif;
   --r-heading-color: #fff;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
