@@ -208,7 +208,7 @@ h0v3BlockAnim.init = function () {
     }
     this.outVarTxt();
     this.inVarTxt();
-    this.errVarTxt()
+    this.errVarTxt();
     Plotly.newPlot(this.id, this.data, this.layout, this.config);
 }
 h0v3BlockAnim.update = function (tAnim,dtAnim) {
@@ -245,7 +245,7 @@ h0v3BlockAnim.update = function (tAnim,dtAnim) {
 
     this.outVarTxt();
     this.inVarTxt();
-    this.errVarTxt()
+    this.errVarTxt();
     Plotly.update(this.id, this.data, this.layout)
 }
 h0v3BlockAnim.reset = function () {
