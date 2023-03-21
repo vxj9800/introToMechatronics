@@ -18,7 +18,7 @@
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/mechatronics.css">
+	<link rel="stylesheet" href="../revealExtras/theme/mechatronics.css">
 
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -30,12 +30,13 @@
 <!-- Load plotlyjs -->
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
+<!-- Add a library to do math, the default javascript Math is not enough. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.7.0/math.js"></script>
+
 <!-- Load homemade animation main script and other animation scripts -->
-<script src="jsAnim/jsAnim.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.2/math.js"></script>
+<script src="../revealExtras/jsAnim/jsAnim.js"></script>
 <script src="jsAnim/h0v0.js"></script>
 <script src="jsAnim/h0v1.js"></script>
-<!-- <script src="jsAnim/h0v2.js"></script> -->
 
 <body>
 	<div class="reveal">
@@ -45,17 +46,16 @@
 
 
 				<section id="h0v0">
-					<h3 style="text-align: left;">Problem 1: Tune the PID gains for the system to reach the
-						desired positions. Also, the error should be in the range
-						\(-0.5
-						\leq e \leq 0.5\) for \(t > 5s\).</h3>
+					<h3 style="text-align: left;">Problem 1: Tune the PID gains for the system to follow the
+						desired positions. Make sure that \(-100 \leq \tau \leq 100\) at all time and 
+						\(-1 \leq e \leq 1\) for \(t > 2s\).</h3>
 					<div class="r-stretch"
-						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 0.8fr;">
+						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;">
 						<div id="h0v0blockAnim"
-							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 300px;">
+							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 250px;">
 						</div>
 						<div id="h0v0blockPosPlot"
-							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 300px;">
+							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 250px;">
 						</div>
 						<div
 							style="grid-row-start: 1; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; text-align: left;">
@@ -82,8 +82,8 @@
 									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_p = \]
 									</div>
 									<div style="display:inline-block;">
-										<input id="h0v0kpVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
+										<input id="h0v0kpVal" type="text" value="0" size="5" maxlength="5"
+											oninput="this.value = this.value.replace(/[^0-9.+-]/g, '');">
 									</div>
 								</div>
 								<div
@@ -97,8 +97,8 @@
 									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_d = \]
 									</div>
 									<div style="display:inline-block;">
-										<input id="h0v0kdVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
+										<input id="h0v0kdVal" type="text" value="0" size="5" maxlength="5"
+											oninput="this.value = this.value.replace(/[^0-9.+-]/g, '');">
 									</div>
 								</div>
 								<div
@@ -113,8 +113,8 @@
 									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_i = \]
 									</div>
 									<div style="display:inline-block;">
-										<input id="h0v0kiVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
+										<input id="h0v0kiVal" type="text" value="0" size="5" maxlength="5"
+											oninput="this.value = this.value.replace(/[^0-9.+-]/g, '');">
 									</div>
 								</div>
 								<div
@@ -134,16 +134,14 @@
 
 
 				<section id="h0v1">
-					<h3 style="text-align: left;">Problem 2: Tune the PID gains for the system to reach desired state
-						without any overshoot, i.e.
-						\(e \geq 0\) at all time.</h3>
+					<h3 style="text-align: left;">Problem 2: Tune the PID gains for the system to reach the desired state. Make sure that \(-0.01 \leq e \leq 0.01\) for \(t > 3s\).</h3>
 					<div class="r-stretch"
-						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 0.8fr;">
+						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;">
 						<div id="h0v1blockAnim"
-							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 300px;">
+							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 250px;">
 						</div>
 						<div id="h0v1blockPosPlot"
-							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 300px;">
+							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 250px;">
 						</div>
 						<div
 							style="grid-row-start: 1; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; text-align: left;">
@@ -170,8 +168,8 @@
 									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_p = \]
 									</div>
 									<div style="display:inline-block;">
-										<input id="h0v1kpVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
+										<input id="h0v1kpVal" type="text" value="0" size="5" maxlength="5"
+											oninput="this.value = this.value.replace(/[^0-9.+-]/g, '');">
 									</div>
 								</div>
 								<div
@@ -185,8 +183,8 @@
 									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_d = \]
 									</div>
 									<div style="display:inline-block;">
-										<input id="h0v1kdVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
+										<input id="h0v1kdVal" type="text" value="0" size="5" maxlength="5"
+											oninput="this.value = this.value.replace(/[^0-9.+-]/g, '');">
 									</div>
 								</div>
 								<div
@@ -201,8 +199,8 @@
 									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_i = \]
 									</div>
 									<div style="display:inline-block;">
-										<input id="h0v1kiVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
+										<input id="h0v1kiVal" type="text" value="0" size="5" maxlength="5"
+											oninput="this.value = this.value.replace(/[^0-9.+-]/g, '');">
 									</div>
 								</div>
 								<div
@@ -218,93 +216,6 @@
 						</div>
 					</div>
 				</section>
-
-
-
-				<!-- <section id="h0v2">
-					<h3 style="text-align: left;">Problem 2: Tune the PID gains for the system shown below such that \(e
-						\geq 0\) for all time.</h3>
-					<div class="r-stretch"
-						style="display: grid; gap: 10px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 0.8fr;">
-						<div id="h0v2blockAnim"
-							style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 300px;">
-						</div>
-						<div id="h0v2blockPosPlot"
-							style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3; width: 500px; height: 300px;">
-						</div>
-						<div
-							style="grid-row-start: 1; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; text-align: left;">
-							<div>
-								<div style="display: inline-block; height: 100px;">\[\tau (e) =
-									k_{p}e+k_{d}\frac{d}{dt}e+ k_{i} \int_{0}^{t}e \cdot dt= \]
-								</div>
-								<div id="h0v2throttleVal" style="display:inline-block;">
-									0</div>
-							</div>
-							where,<br>
-							<div
-								style="display:grid; gap: 5px; grid-template-columns: 1fr 1.25fr; grid-template-rows: 1fr 1fr 1fr 1fr;">
-								<div
-									style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 3;">
-									<div style="display: inline-block; height: 100px;">\[\mspace{3em} e = x_{des} - x =
-										\]
-									</div>
-									<div id="h0v2xErr" style="display:inline-block;">0
-									</div>
-								</div>
-								<div
-									style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2;">
-									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_p = \]
-									</div>
-									<div style="display:inline-block;">
-										<input id="h0v2kpVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
-									</div>
-								</div>
-								<div
-									style="grid-row-start: 2; grid-row-end: 3; grid-column-start: 2; grid-column-end: 3;">
-									<div style="display: inline-block; height: 100px;">\[ k_{p}e = \]
-									</div>
-									<div id="h0v2pControlVal" style="display:inline-block;">8</div>
-								</div>
-								<div
-									style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 1; grid-column-end: 2;">
-									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_d = \]
-									</div>
-									<div style="display:inline-block;">
-										<input id="h0v2kdVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
-									</div>
-								</div>
-								<div
-									style="grid-row-start: 3; grid-row-end: 4; grid-column-start: 2; grid-column-end: 3;">
-									<div style="display: inline-block; height: 100px;">\[ k_{d}
-										\frac{d}{dt}e
-										= \]</div>
-									<div id="h0v2dControlVal" style="display:inline-block;">8</div>
-								</div>
-								<div
-									style="grid-row-start: 4; grid-row-end: 5; grid-column-start: 1; grid-column-end: 2;">
-									<div style="display: inline-block; height: 100px;">\[\mspace{3em} k_i = \]
-									</div>
-									<div style="display:inline-block;">
-										<input id="h0v2kiVal" type="number" value="0"
-											style="width: 100px; height: 30px; font-size: 24px;">
-									</div>
-								</div>
-								<div
-									style="grid-row-start: 4; grid-row-end: 5; grid-column-start: 2; grid-column-end: 3;">
-									<div style="display: inline-block; height: 100px;">\[ k_{i}
-										\int_{0}^{t} e
-										\cdot dt =
-										\]
-									</div>
-									<div id="h0v2iControlVal" style="display:inline-block;">8</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section> -->
 
 
 
