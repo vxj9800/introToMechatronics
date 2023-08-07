@@ -46,9 +46,18 @@ h0v5numberSystems.splitDec = function (){
     for (let i = 1; i < decStr.length; ++i){
         decSplitStr += '+' + decStr[i] + '^{\\cdot 10^{' + (decStr.length-1-i).toString() + '}}';
     }
-    katex.render(decSplitStr,this.decSplitElem,{
-        throwOnError: false
-    });
+    var jaxSplitElem = MathJax.Hub.getJaxFor(this.decSplitElem);
+    if (jaxSplitElem == null) {
+        this.decSplitElem.innerHTML = '\\(' + decSplitStr + '\\)';
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.decSplitElem]);
+    } else {
+        MathJax.Hub.Queue(["Text", jaxSplitElem, decSplitStr]);
+    }
+    // this.decSplitElem.innerHTML = '\\(' + decSplitStr + '\\)';
+    // MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.decSplitElem]);
+    // katex.render(decSplitStr,this.decSplitElem,{
+    //     throwOnError: false
+    // });
 }
 
 h0v5numberSystems.splitBin = function (){
@@ -73,13 +82,33 @@ h0v5numberSystems.splitBin = function (){
                         + ' & \\ & + & \\ &' + binStr[14] + '^{\\cdot 2^{' + (binStr.length-15).toString() + '}}'
                         + ' & \\ & + & \\ &' + binStr[15] + '^{\\cdot 2^{' + (binStr.length-16).toString() + '}}'
                         + ' \\end{alignat*}';
-    katex.render('\\begin{matrix} \\verb|' + '0b' + binStr.slice(0,8) + '|' + '\\\\' + '\\verb|  ' + binStr.slice(8) + '| \\end{matrix} =',this.binValElem,{
-        throwOnError: false
-    });
-    katex.render(binSplitStr,this.binSplitElem,{
-        displayMode: true,
-        throwOnError: false
-    });
+    // this.binValElem.innerHTML = '\\(' + '\\begin{matrix} \\verb|' + '0b' + binStr.slice(0, 8) + '|' + '\\\\' + '\\verb|  ' + binStr.slice(8) + '| \\end{matrix} =' + '\\)';
+    // MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.binValElem]);
+    // this.binSplitElem.innerHTML = '\\(' + binSplitStr + '\\)';
+    // MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.binSplitElem]);
+
+    var jaxValElem = MathJax.Hub.getJaxFor(this.binValElem);
+    if (jaxValElem == null) {
+        this.binValElem.innerHTML = '\\(' + '\\begin{matrix} \\verb|' + '0b' + binStr.slice(0, 8) + '|' + '\\\\' + '\\verb|  ' + binStr.slice(8) + '| \\end{matrix} =' + '\\)';
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.binValElem]);
+    } else {
+        MathJax.Hub.Queue(["Text", jaxValElem, '\\begin{matrix} \\verb|' + '0b' + binStr.slice(0, 8) + '|' + '\\\\' + '\\verb|  ' + binStr.slice(8) + '| \\end{matrix} =']);
+    }
+
+    var jaxSplitElem = MathJax.Hub.getJaxFor(this.binSplitElem);
+    if (jaxSplitElem == null) {
+        this.binSplitElem.innerHTML = '\\(' + binSplitStr + '\\)';
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.binSplitElem]);
+    } else {
+        MathJax.Hub.Queue(["Text", jaxSplitElem, binSplitStr]);
+    }
+    // katex.render('\\begin{matrix} \\verb|' + '0b' + binStr.slice(0,8) + '|' + '\\\\' + '\\verb|  ' + binStr.slice(8) + '| \\end{matrix} =',this.binValElem,{
+    //     throwOnError: false
+    // });
+    // katex.render(binSplitStr,this.binSplitElem,{
+    //     displayMode: true,
+    //     throwOnError: false
+    // });
 }
 
 h0v5numberSystems.splitHex = function (){
@@ -89,10 +118,30 @@ h0v5numberSystems.splitHex = function (){
     for (let i = 1; i < hexStr.length; ++i){
         hexSplitStr += '+' + hexStr[i] + '^{\\cdot 16^{' + (hexStr.length-1-i).toString() + '}}';
     }
-    katex.render('\\verb| 0x' + hexStr + '| =',this.hexValElem,{
-        throwOnError: false
-    });
-    katex.render(hexSplitStr,this.hexSplitElem,{
-        throwOnError: false
-    });
+    // this.hexValElem.innerHTML = '\\(' + '\\verb| 0x' + hexStr + '| =' + '\\)';
+    // MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.hexValElem]);
+    // this.hexSplitElem.innerHTML = '\\(' + hexSplitStr + '\\)';
+    // MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.hexSplitElem]);
+
+    var jaxValElem = MathJax.Hub.getJaxFor(this.hexValElem);
+    if (jaxValElem == null) {
+        this.hexValElem.innerHTML = '\\(' + '\\verb| 0x' + hexStr + '| =' + '\\)';
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.hexValElem]);
+    } else {
+        MathJax.Hub.Queue(["Text", jaxValElem, '\\verb| 0x' + hexStr + '| =']);
+    }
+
+    var jaxSplitElem = MathJax.Hub.getJaxFor(this.hexSplitElem);
+    if (jaxSplitElem == null) {
+        this.hexSplitElem.innerHTML = '\\(' + hexSplitStr + '\\)';
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.hexSplitElem]);
+    } else {
+        MathJax.Hub.Queue(["Text", jaxSplitElem, hexSplitStr]);
+    }
+    // katex.render('\\verb| 0x' + hexStr + '| =',this.hexValElem,{
+    //     throwOnError: false
+    // });
+    // katex.render(hexSplitStr,this.hexSplitElem,{
+    //     throwOnError: false
+    // });
 }
