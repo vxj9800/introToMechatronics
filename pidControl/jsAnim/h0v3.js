@@ -125,9 +125,9 @@ h0v3BlockAnim.outVarTxt = function () { // Draw the h0v3blockAnim output variabl
         xref: 'x',
         yref: 'y',
         showarrow: false,
-        text: '$x$',
+        text: '<i>x</i>',
         textangle: -30,
-        font: { family: 'Garamond,serif', size: 24, color: 'white' },
+        font: { family: 'Times, serif', size: 24, color: 'white' },
     };
 }
 h0v3BlockAnim.inVarTxt = function () {
@@ -157,9 +157,9 @@ h0v3BlockAnim.inVarTxt = function () {
         xref: 'x',
         yref: 'y',
         showarrow: false,
-        text: '$x_{des}$',
+        text: '<i>x<sub>des</sub></i>',
         textangle: -30,
-        font: { family: 'Garamond,serif', size: 24, color: 'white' },
+        font: { family: 'Times, serif', size: 24, color: 'white' },
     };
 }
 h0v3BlockAnim.errVarTxt = function () {
@@ -189,7 +189,7 @@ h0v3BlockAnim.errVarTxt = function () {
         xref: 'x',
         yref: 'y',
         showarrow: false,
-        text: '$e$',
+        text: '<i>e</i>',
         textangle: -30,
         font: { family: 'Times, serif', size: 24, color: 'white' },
     };
