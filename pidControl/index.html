@@ -486,24 +486,27 @@
 						<div
 							style="grid-row-start: 1; grid-row-end: 3; grid-column-start: 1; grid-column-end: 2; text-align: left;">
 							<div>
-								<div style="display: inline-block; height: 100px;">\[\tau (e)
+								<!-- <div style="display: inline-block; height: 100px;">\[\tau (e)
 									\fragment{0}{= k_{p}e}
 									\fragment{1}{+
 									k_{d}
 									\frac{d}{dt}e} \fragment{2}{+ k_{i} \int_{0}^{t}
 									e \cdot dt} \fragment{0}{=} \]</div>
 								<div id="h0v4ThrottleVal" class="fragment fade-right" data-fragment-index="1"
-									style="display:inline-block;">0</div>
+									style="display:inline-block;">0</div> -->
+								<div style="display: inline-block; height: 100px;">\[\tau (e) = k_{p}e \]</div>
+								<div class="fragment fade-right" data-fragment-index="2" style="display: inline-block; height: 100px;">\[+ \; k_{d} \frac{d}{dt}e\]</div>
+								<div class="fragment fade-right" data-fragment-index="3" style="display: inline-block; height: 100px;">\[+ \; k_{i} \int_{0}^{t}e \cdot dt\]</div>
+								<div class="fragment fade-right" data-fragment-index="1" style="display: inline-block; height: 100px;">\[=\]</div>
+								<div id="h0v4ThrottleVal" class="fragment fade-right" data-fragment-index="1" style="display:inline-block;">0</div>
 							</div>
 							where,<br>
 							<div
 								style="display:grid; gap: 5px; grid-template-columns: 1fr 1.25fr; grid-template-rows: 1fr 1fr 1fr 1fr;">
 								<div
 									style="grid-row-start: 1; grid-row-end: 2; grid-column-start: 1; grid-column-end: 3;">
-									<div style="display: inline-block; height: 100px;">\[\mspace{3em} e = x_{des} - x
-										\fragment{0}{=}
-										\]
-									</div>
+									<div style="display: inline-block; height: 100px;">\[\mspace{3em} e = x_{des} - x \]</div>
+									<div class="fragment fade-right" data-fragment-index="1" style="display: inline-block; height: 100px;">\[ = \]</div>
 									<div id="h0v4XErr" class="fragment fade-right" data-fragment-index="1"
 										style="display:inline-block;">0</div>
 								</div>

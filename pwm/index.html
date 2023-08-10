@@ -101,9 +101,9 @@
 							</li>
 							<li class="fragment" style="margin-top: 24px;">
 								The divided frequency can be calculated as
-								$$
-									f_{div} = \frac{f_{sys}}{\left( \textnormal{\verb|DIV|}_i + \frac{\textnormal{\verb|DIV|}_f}{16} \right)}
-								$$
+								\[ \begin{equation}
+								\qquad \qquad \qquad \qquad \qquad \qquad \qquad f_{div} = \frac{f_{sys}}{\left( \verb|DIV|_i + \frac{\verb|DIV|_f}{16} \right)}
+								\end{equation} \]
 							</li>
 						</ul>
 						<div data-id="sysClock" id="h0v3SysClk" style="grid-column-start: 1; grid-column-end: 2;"></div>
@@ -128,9 +128,9 @@
 							<li class="fragment" style="margin-top: 24px;">Time it takes for the <span
 									style="font-family: 'Courier New', Courier, monospace;">CTR</span>
 								register to overflow is
-								$$
-									p = \frac{\textnormal{\verb|TOP|} + 1}{f_{div}}
-								$$
+								\[\begin{equation}
+								\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad p = \frac{\verb|TOP| + 1}{f_{div}}
+								\end{equation}\]
 								</li>
 						</ul>
 						<div data-id="divClock" id="h0v4DivClk" style="grid-column-start: 1; grid-column-end: 2;"></div>
@@ -165,9 +165,9 @@
 									style="font-family: 'Courier New', Courier, monospace;">LOW</span> time period
 								in one cycle.</li>
 							<li class="fragment" style="margin-top: 24px;">The PWM duty cycle can thus be defined as
-								$$
-									D = \frac{t_{H}}{t_{H} + t_{L}} \cdot 100\% = \frac{\textnormal{\verb|CC|}}{\textnormal{\verb|TOP| + 1}} \cdot 100\%
-								$$
+								\[\begin{equation}
+								\qquad \qquad \qquad \qquad \qquad \qquad \qquad D = \frac{t_{H}}{t_{H} + t_{L}} \cdot 100\% = \frac{\verb|CC|}{\verb|TOP| + 1} \cdot 100\%
+								\end{equation}\]
 							</li>
 						</ul>
 						<div style="justify-self: center; align-self: center;">
