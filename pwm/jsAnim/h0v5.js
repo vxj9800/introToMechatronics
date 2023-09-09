@@ -108,9 +108,14 @@ h0v5PwmOut.config = {
 h0v5PwmOut.init = function () {
     this.frq = h0v5CtrReg.divClkFrq/(h0v5TopReg.val+1);
     for (let i = 0; i < this.data[0].x.length; ++i) {
-        this.data[0].x[i] = i*this.dt/10;
-        var val = this.data[0].x[i]*h0v5CtrReg.divClkFrq;
-        this.data[0].y[i] = (val % (h0v5TopReg.val+1) < h0v5CcReg.val) ? 1 : 0;
+        this.data[0].x[i] = (i - this.data[0].x.length) * this.dt / 10;
+        if (this.data[0].x[i] < 0) {
+            this.data[0].y[i] = NaN;
+        }
+        else {
+            var val = this.data[0].x[i] * h0v5CtrReg.divClkFrq;
+            this.data[0].y[i] = (val % (h0v5TopReg.val + 1) < h0v5CcReg.val) ? 1 : 0;
+        }
     }
     Plotly.newPlot(this.id, this.data, this.layout, this.config);
 };
@@ -118,17 +123,27 @@ h0v5PwmOut.update = function (animT, animDt) {
     Plotly.update(this.id, this.data, this.layout, this.config);
     this.frq = h0v5CtrReg.divClkFrq/(h0v5TopReg.val+1);
     for (let i = 0; i < this.data[0].x.length; ++i) {
-        this.data[0].x[i] = i*this.dt/10 + this.dt * animT;
-        var val = this.data[0].x[i]*h0v5CtrReg.divClkFrq;
-        this.data[0].y[i] = (val % (h0v5TopReg.val+1) < h0v5CcReg.val) ? 1 : 0;
+        this.data[0].x[i] = (i - this.data[0].x.length) * this.dt / 10 + this.dt * animT;
+        if (this.data[0].x[i] < 0) {
+            this.data[0].y[i] = NaN;
+        }
+        else {
+            var val = this.data[0].x[i] * h0v5CtrReg.divClkFrq;
+            this.data[0].y[i] = ((val % (h0v5TopReg.val + 1)) < h0v5CcReg.val) ? 1 : 0;
+        }
     }
 };
 h0v5PwmOut.reset = function () {
     this.frq = h0v5CtrReg.divClkFrq/(h0v5TopReg.val+1);
     for (let i = 0; i < this.data[0].x.length; ++i) {
-        this.data[0].x[i] = i*this.dt/10;
-        var val = this.data[0].x[i]*h0v5CtrReg.divClkFrq;
-        this.data[0].y[i] = (val % (h0v5TopReg.val+1) < h0v5CcReg.val) ? 1 : 0;
+        this.data[0].x[i] = (i - this.data[0].x.length) * this.dt / 10;
+        if (this.data[0].x[i] < 0) {
+            this.data[0].y[i] = NaN;
+        }
+        else {
+            var val = this.data[0].x[i] * h0v5CtrReg.divClkFrq;
+            this.data[0].y[i] = (val % (h0v5TopReg.val + 1) < h0v5CcReg.val) ? 1 : 0;
+        }
     }
     this.update(0, 0);
 };
