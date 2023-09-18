@@ -38,6 +38,7 @@
 
 <!-- Load Wavedrom library to draw signal diagrams -->
 <script src="../wavedrom/default.js"></script>	<!-- Load homemade Wavedrom theme to work with the dark background -->
+<script src="../wavedrom/narrow.js"></script> <!-- Load homemade Wavedrom theme to work with the dark background -->
 <script src="../wavedrom/wavedrom.js"></script>	<!-- Load homemade Wavedrom theme to work with the dark background -->
 
 <!-- Load homemade animation main script and other animation scripts -->
@@ -173,10 +174,11 @@
 								<div>
 									<script type="WaveDrom">
 										{signal: [
-												{name: 'SDA', wave: '10.5...........................5...4...1..', node: '.A.B.', data: ["7-bit Address","Read/Write","Ack/Nack"], period: 0.5},
-												{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.', period: 0.5}
-											],
-											edge: ['A-B Start']
+											{name: 'SDA', wave: '1.0....5.....................................................................5.........4.........z', node: 'A...B', data: ["7-bit Address","Read/Write","Ack/Nack"], period: 0.5},
+											{name: 'SCL', wave: '1....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l..', period:0.5}
+										],
+										edge: ['A-B Start'],
+										config: {skin:'narrow'}
 										}
 									</script>
 								</div>
@@ -186,10 +188,10 @@
 								<div>
 									<script type="WaveDrom">
 										{signal: [
-												{name: 'SDA', wave: '1.4...............................0...1...|..4...............................1...0..1.', node: '..................................A...B.......................................C...D...E.', data: ["8-bit Data","8-bit Data"], period: 0.25},
-												{name: 'SCL', wave: '1l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..|.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.25}
-											],
-											edge: ['A-B Ack','C-D Nack','D-E Stop']
+											{name: 'SDA', wave: 'z4..............................................0.....z|4..............................................1.....0...1.', node: '................................................A.....B................................................C.....D.E...F', data: ["8-bit Data","8-bit Data"], period: 0.5},
+											{name: 'SCL', wave: 'l.H..l..H..l..H..l..H..l..H..l..H..l..H..l..H..l..H..l.|.H..l..H..l..H..l..H..l..H..l..H..l..H..l..H..l..H..l..H...', period: 0.5}
+										],
+										edge: ['A-B Ack','C-D Nack','E-F Stop']
 										}
 									</script>
 								</div>
@@ -199,11 +201,11 @@
 								<div>
 									<script type="WaveDrom">
 										{signal: [
-											{name: 'SDA', wave: '1.5...............................0...1...|..5...............................0...0..1.', node: '..................................A...B.......................................C...D...E.', data: ["8-bit Data","8-bit Data"], period: 0.25},
-											{name: 'SCL', wave: '1l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..|.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.25}
+											{name: 'SDA', wave: 'z5..............................................0.....z|5..............................................0.....0...1.', node: '................................................A.....B................................................C.....D.E...F', data: ["8-bit Data","8-bit Data"], period: 0.5},
+											{name: 'SCL', wave: 'l.H..l..H..l..H..l..H..l..H..l..H..l..H..l..H..l..H..l.|.H..l..H..l..H..l..H..l..H..l..H..l..H..l..H..l..H..l..H...', period: 0.5}
 										],
-										edge: ['A-B Ack','C-D Ack','D-E Stop']
-									}
+										edge: ['A-B Ack','C-D Ack','E-F Stop']
+										}
 									</script>
 								</div>
 							</li>
@@ -215,108 +217,118 @@
 
 				<section id="h0v5">
 					<h2>I<sup>2</sup>C Message Example</h2>
-					<div class="r-stretch" style="display: grid; grid-template-rows: 1fr 1fr 1fr 1fr 1fr;">
-						<div>
+					<div style="display: grid; grid-template-rows: 1fr 1fr 1fr 1fr 1fr; width: fit-content; margin-left: auto; margin-right: auto;">
+						<div style="text-align: left;">
 							<script type="WaveDrom">
-								{signal:
-									[
-										{
-											node: 'A..B...C...D...E...F...G...H...I...J...K..L',
-											period: 0.5,
-										},
-										{
-											name: 'SDA',
-											 wave: '10.........1.......0...................1...',
-											 data: ["7-bit Address","Read/Write","Ack/Nack"],
-											period: 0.5
-										},
-										{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.5}
+								{signal: [
+									{
+										node: 'A...B..C.........D.........E.........F.........G.........H.........I.........J.........K........L',
+										period: 0.5,
+									},
+									{
+										name: 'SDA',
+										wave: '1.0........................1...................0................................................',
+										period: 0.5
+									},
+									{
+										name: 'SCL',
+										wave: '1....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l',
+										period: 0.5
+									}
 									],
-									edge: ['A<->B S', 'B<->C 0', 'C<->D 0', 'D<->E 1', 'E<->F 1', 'F<->G 0', 'G<->H 0', 'H<->I 0', 'I<->J Write', 'J<->K Ack']
+									edge: ['A<->B S', 'C<->D 0', 'D<->E 0', 'E<->F 1', 'F<->G 1', 'G<->H 0', 'H<->I 0', 'I<->J 0', 'J<->K Write', 'K<->L Ack']
 								}
 							</script>
 						</div>
 						
-						<div class="fragment">
+						<div class="fragment" style="text-align: left;">
 							<script type="WaveDrom">
-								{signal:
-									[
-										{
-											node: 'A..B...C...D...E...F...G...H...I...J...K..L',
-											period: 0.5,
-										},
-										{
-											name: 'SDA',
-											 wave: '1..0...................1...0...1...0...1...',
-											 data: ["7-bit Address","Read/Write","Ack/Nack"],
-											period: 0.5
-										},
-										{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.5}
+								{signal: [
+									{
+										node: '.C.........D.........E.........F.........G.........H.........I.........J.........K........L',
+										period: 0.5,
+									},
+									{
+										name: 'SDA',
+										wave: '0..................................................1.........0.........1.........0........',
+										period: 0.5
+									},
+									{
+										name: 'SCL',
+										wave: '0...H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l',
+										period: 0.5
+									}
 									],
-									edge: ['B<->C 0', 'C<->D 0', 'D<->E 0', 'E<->F 0', 'F<->G 0', 'G<->H 1', 'H<->I 0', 'I<->J 1', 'J<->K Ack']
+									edge: ['C<->D 0', 'D<->E 0', 'E<->F 0', 'F<->G 0', 'G<->H 0', 'H<->I 1', 'I<->J 0', 'J<->K 1', 'K<->L Ack']
 								}
 							</script>
 						</div>
 						
-						<div class="fragment">
+						<div class="fragment" style="text-align: left;">
 							<script type="WaveDrom">
-								{signal:
-									[
-										{
-											node: 'A..B...C...D...E...F...G...H...I...J...K..L',
-											period: 0.5,
-										},
-										{
-											name: 'SDA',
-											 wave: '10.........1.......0...........1...0...1...',
-											 data: ["7-bit Address","Read/Write","Ack/Nack"],
-											period: 0.5
-										},
-										{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.5}
+								{signal: [
+									{
+										node: 'A...B..C.........D.........E.........F.........G.........H.........I.........J.........K........L',
+										period: 0.5,
+									},
+									{
+										name: 'SDA',
+										wave: '1.0........................1...................0.............................1.........0........',
+										period: 0.5
+									},
+									{
+										name: 'SCL',
+										wave: '1....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l',
+										period: 0.5
+									}
 									],
-									edge: ['A<->B S', 'B<->C 0', 'C<->D 0', 'D<->E 1', 'E<->F 1', 'F<->G 0', 'G<->H 0', 'H<->I 0', 'I<->J Read', 'J<->K Ack']
+									edge: ['A<->B S', 'C<->D 0', 'D<->E 0', 'E<->F 1', 'F<->G 1', 'G<->H 0', 'H<->I 0', 'I<->J 0', 'J<->K Read', 'K<->L Ack']
 								}
 							</script>
 						</div>
 						
-						<div class="fragment">
+						<div class="fragment" style="text-align: left;">
 							<script type="WaveDrom">
-								{signal:
-									[
-										{
-											node: 'A..B...C...D...E...F...G...H...I...J...K..L',
-											period: 0.5,
-										},
-										{
-											name: 'SDA',
-											 wave: '1..0...........................1...0...1...',
-											 data: ["7-bit Address","Read/Write","Ack/Nack"],
-											period: 0.5
-										},
-										{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.5}
+								{signal: [
+									{
+										node: '.C.........D.........E.........F.........G.........H.........I.........J.........K........L',
+										period: 0.5,
+									},
+									{
+										name: 'SDA',
+										wave: '0......................................................................1.........0........',
+										period: 0.5
+									},
+									{
+										name: 'SCL',
+										wave: '0...H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l',
+										period: 0.5
+									}
 									],
-									edge: ['B<->C 0', 'C<->D 0', 'D<->E 0', 'E<->F 0', 'F<->G 0', 'G<->H 0', 'H<->I 0', 'I<->J 1', 'J<->K Ack']
+									edge: ['C<->D 0', 'D<->E 0', 'E<->F 0', 'F<->G 0', 'G<->H 0', 'H<->I 0', 'I<->J 0', 'J<->K 1', 'K<->L Ack']
 								}
 							</script>
 						</div>
 						
-						<div class="fragment">
+						<div class="fragment" style="text-align: left;">
 							<script type="WaveDrom">
-								{signal:
-									[
-										{
-											node: 'A..B...C...D...E...F...G...H...I...J...K..L',
-											period: 0.5,
-										},
-										{
-											name: 'SDA',
-											 wave: '1......0.......1...0...1...0.......1...0.1.',
-											 data: ["7-bit Address","Read/Write","Ack/Nack"],
-											period: 0.5
-										},
-										{name: 'SCL', wave: '1.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H.l.H..', period: 0.5}
+								{signal: [
+									{
+										node: '.C.........D.........E.........F.........G.........H.........I.........J.........K........L...M...N',
+										period: 0.5,
+									},
+									{
+										name: 'SDA',
+										wave: '01.........0...................1.........0.........1.........0...................1.........0....1..',
+										period: 0.5
+									},
+									{
+										name: 'SCL',
+										wave: '0...H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....l....H....',
+										period: 0.5
+									}
 									],
-									edge: ['B<->C 1', 'C<->D 0', 'D<->E 0', 'E<->F 1', 'F<->G 0', 'G<->H 1', 'H<->I 0', 'I<->J 0', 'J<->K Nack', 'K<->L St']
+									edge: ['C<->D 1', 'D<->E 0', 'E<->F 0', 'F<->G 1', 'G<->H 0', 'H<->I 1', 'I<->J 0', 'J<->K 0', 'K<->L Nack', 'M<->N St']
 								}
 							</script>
 						</div>
